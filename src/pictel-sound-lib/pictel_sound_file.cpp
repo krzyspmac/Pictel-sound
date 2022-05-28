@@ -6,6 +6,7 @@
 //
 
 #include "pictel_sound_file.hpp"
+#import <vorbis/vorbisfile.h>
 
 using namespace PictelSound;
 
@@ -17,4 +18,9 @@ PictelSoundFile::PictelSoundFile(std::string path)
 PictelSoundFile::~PictelSoundFile()
 {
     std::cout << "asd" << std::endl;
+}
+
+bool PictelSoundFile::Open()
+{
+    return false;
 }

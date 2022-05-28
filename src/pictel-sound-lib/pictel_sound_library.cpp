@@ -8,6 +8,7 @@
 using namespace PictelSound;
 
 static PictelSoundFile *PictelSoundFileConv(PictelSoundRef);
+#define REF2OBJ(x) PictelSoundFileConv(x)
 
 PictelSoundRef PictelSoundOpenSound(const char *filename)
 {
@@ -17,19 +18,17 @@ PictelSoundRef PictelSoundOpenSound(const char *filename)
 
 void PictelSoundRelease(PictelSoundRef ref)
 {
-    if ( auto *reference = PictelSoundFileConv(ref) )
-    {   delete reference;
-    }
+    delete REF2OBJ(ref);
 }
 
 const char *PictelSoundGetPath(PictelSoundRef ref)
 {
-    if ( auto *reference = PictelSoundFileConv(ref) )
-    {   return reference->GetPath().c_str();
-    }
-    else
-    {   return nullptr;
-    }
+    return REF2OBJ(ref)->GetPath().c_str();
+}
+
+bool PictelSoundOpen(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->Open();
 }
 
 PictelSoundFile *PictelSoundFileConv(PictelSoundRef ref)

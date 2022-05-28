@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0326FF2842619500E084AD /* pictel_sound_library.cpp */; };
 		7F0327112842621A00E084AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0327032842619500E084AD /* main.cpp */; };
-		7F0327152842622500E084AD /* libPictel-sound-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */; };
 		7F032718284264D800E084AD /* pictel_sound_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032716284264D800E084AD /* pictel_sound_file.cpp */; };
 		7F032719284264D800E084AD /* pictel_sound_file.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F032717284264D800E084AD /* pictel_sound_file.hpp */; };
+		7F03271B284274A900E084AD /* libPictel-sound-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */; };
+		7F0327442842760300E084AD /* libvorbisfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03273E284275F000E084AD /* libvorbisfile.a */; };
+		7F0327452842760500E084AD /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03273F284275F000E084AD /* libogg.a */; };
+		7F0327462842760600E084AD /* libvorbisenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032740284275F000E084AD /* libvorbisenc.a */; };
+		7F0327472842760800E084AD /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032741284275F000E084AD /* libvorbis.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,12 @@
 		7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Pictel-cmd-sample-app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F032716284264D800E084AD /* pictel_sound_file.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pictel_sound_file.cpp; sourceTree = "<group>"; };
 		7F032717284264D800E084AD /* pictel_sound_file.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pictel_sound_file.hpp; sourceTree = "<group>"; };
+		7F03273C284275F000E084AD /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		7F03273E284275F000E084AD /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbisfile.a; sourceTree = "<group>"; };
+		7F03273F284275F000E084AD /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libogg.a; sourceTree = "<group>"; };
+		7F032740284275F000E084AD /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbisenc.a; sourceTree = "<group>"; };
+		7F032741284275F000E084AD /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbis.a; sourceTree = "<group>"; };
+		7F032743284275F000E084AD /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F0327442842760300E084AD /* libvorbisfile.a in Frameworks */,
+				7F0327452842760500E084AD /* libogg.a in Frameworks */,
+				7F0327462842760600E084AD /* libvorbisenc.a in Frameworks */,
+				7F0327472842760800E084AD /* libvorbis.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F0327152842622500E084AD /* libPictel-sound-macos.a in Frameworks */,
+				7F03271B284274A900E084AD /* libPictel-sound-macos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			children = (
 				7F0326FB2842619500E084AD /* src */,
 				7F0326EE2842616E00E084AD /* Products */,
+				7F032739284275DE00E084AD /* Dependencies */,
 				7F0327142842622500E084AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +148,52 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F032739284275DE00E084AD /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				7F03273A284275F000E084AD /* lib */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		7F03273A284275F000E084AD /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				7F03273B284275F000E084AD /* win64 */,
+				7F03273D284275F000E084AD /* macos-universal */,
+				7F032742284275F000E084AD /* linux */,
+			);
+			name = lib;
+			path = "../../external/ogg-vorbis/lib";
+			sourceTree = "<group>";
+		};
+		7F03273B284275F000E084AD /* win64 */ = {
+			isa = PBXGroup;
+			children = (
+				7F03273C284275F000E084AD /* README */,
+			);
+			path = win64;
+			sourceTree = "<group>";
+		};
+		7F03273D284275F000E084AD /* macos-universal */ = {
+			isa = PBXGroup;
+			children = (
+				7F03273E284275F000E084AD /* libvorbisfile.a */,
+				7F03273F284275F000E084AD /* libogg.a */,
+				7F032740284275F000E084AD /* libvorbisenc.a */,
+				7F032741284275F000E084AD /* libvorbis.a */,
+			);
+			path = "macos-universal";
+			sourceTree = "<group>";
+		};
+		7F032742284275F000E084AD /* linux */ = {
+			isa = PBXGroup;
+			children = (
+				7F032743284275F000E084AD /* README */,
+			);
+			path = linux;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +427,11 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../external/ogg-vorbis/lib/macos-universal",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -379,6 +445,11 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../external/ogg-vorbis/lib/macos-universal",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

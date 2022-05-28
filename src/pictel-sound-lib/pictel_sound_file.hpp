@@ -20,6 +20,9 @@ namespace PictelSound
         ~PictelSoundFile();
 
     public:
+        bool Open();
+
+    public:
         std::string& GetPath() { return m_path; };
     };
 };

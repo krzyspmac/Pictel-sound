@@ -21,4 +21,7 @@ void PictelSoundRelease(PictelSoundRef);
 /** Get file attributes */
 const char *PictelSoundGetPath(PictelSoundRef);
 
+/** Open the file */
+bool PictelSoundOpen(PictelSoundRef);
+
 #endif //PICTEL_SOUND_H
