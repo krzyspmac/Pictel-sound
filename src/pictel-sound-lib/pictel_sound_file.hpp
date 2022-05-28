@@ -9,21 +9,24 @@
 #define pictel_sound_file_hpp
 
 #include <iostream>
+#include "decoder_interface.h"
 
 namespace PictelSound
 {
     class PictelSoundFile
     {
-        std::string m_path;
+        DecoderI *m_decoder;
     public:
-        PictelSoundFile(std::string);
+        /** The default initializer. Takes ownership of the DecoderI provided */
+        PictelSoundFile(DecoderI*);
         ~PictelSoundFile();
 
     public:
         bool Open();
+        void Close();
 
     public:
-        std::string& GetPath() { return m_path; };
+//        std::string& GetPath() { return m_path; };
     };
 };
 

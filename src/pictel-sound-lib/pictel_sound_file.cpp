@@ -6,21 +6,29 @@
 //
 
 #include "pictel_sound_file.hpp"
-#import <vorbis/vorbisfile.h>
 
 using namespace PictelSound;
 
-PictelSoundFile::PictelSoundFile(std::string path)
-:   m_path(path)
+PictelSoundFile::PictelSoundFile(DecoderI *decoder)
+:   m_decoder(decoder)
 {
 }
 
 PictelSoundFile::~PictelSoundFile()
 {
-    std::cout << "asd" << std::endl;
+    Close();
 }
 
 bool PictelSoundFile::Open()
 {
-    return false;
+    return m_decoder->Open();
+}
+
+void PictelSoundFile::Close()
+{
+    if (m_decoder != nullptr)
+    {   m_decoder->Close();
+        delete m_decoder;
+        m_decoder = NULL;
+    }
 }

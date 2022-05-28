@@ -4,6 +4,7 @@
 
 #include "include/pictel_sound.h"
 #include "pictel_sound_file.hpp"
+#include "decoder_vorbis.hpp"
 
 using namespace PictelSound;
 
@@ -12,7 +13,8 @@ static PictelSoundFile *PictelSoundFileConv(PictelSoundRef);
 
 PictelSoundRef PictelSoundOpenSound(const char *filename)
 {
-    PictelSoundFile *reference = new PictelSoundFile(filename);
+    DecoderI *decoder = new DecoderVorbis(filename);
+    PictelSoundFile *reference = new PictelSoundFile(decoder);
     return reference;
 }
 
@@ -23,7 +25,8 @@ void PictelSoundRelease(PictelSoundRef ref)
 
 const char *PictelSoundGetPath(PictelSoundRef ref)
 {
-    return REF2OBJ(ref)->GetPath().c_str();
+    return "";
+//    return REF2OBJ(ref)->GetPath().c_str();
 }
 
 bool PictelSoundOpen(PictelSoundRef ref)

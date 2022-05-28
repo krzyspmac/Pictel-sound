@@ -16,6 +16,8 @@
 		7F0327452842760500E084AD /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03273F284275F000E084AD /* libogg.a */; };
 		7F0327462842760600E084AD /* libvorbisenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032740284275F000E084AD /* libvorbisenc.a */; };
 		7F0327472842760800E084AD /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032741284275F000E084AD /* libvorbis.a */; };
+		7F03274B284279BC00E084AD /* decoder_vorbis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032749284279BC00E084AD /* decoder_vorbis.cpp */; };
+		7F03274C284279BC00E084AD /* decoder_vorbis.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F03274A284279BC00E084AD /* decoder_vorbis.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		7F032740284275F000E084AD /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbisenc.a; sourceTree = "<group>"; };
 		7F032741284275F000E084AD /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbis.a; sourceTree = "<group>"; };
 		7F032743284275F000E084AD /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		7F0327482842794900E084AD /* decoder_interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decoder_interface.h; sourceTree = "<group>"; };
+		7F032749284279BC00E084AD /* decoder_vorbis.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = decoder_vorbis.cpp; sourceTree = "<group>"; };
+		7F03274A284279BC00E084AD /* decoder_vorbis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = decoder_vorbis.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,9 @@
 				7F0326FF2842619500E084AD /* pictel_sound_library.cpp */,
 				7F032717284264D800E084AD /* pictel_sound_file.hpp */,
 				7F032716284264D800E084AD /* pictel_sound_file.cpp */,
+				7F0327482842794900E084AD /* decoder_interface.h */,
+				7F03274A284279BC00E084AD /* decoder_vorbis.hpp */,
+				7F032749284279BC00E084AD /* decoder_vorbis.cpp */,
 			);
 			path = "pictel-sound-lib";
 			sourceTree = "<group>";
@@ -203,6 +211,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F03274C284279BC00E084AD /* decoder_vorbis.hpp in Headers */,
 				7F032719284264D800E084AD /* pictel_sound_file.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F03274B284279BC00E084AD /* decoder_vorbis.cpp in Sources */,
 				7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */,
 				7F032718284264D800E084AD /* pictel_sound_file.cpp in Sources */,
 			);
