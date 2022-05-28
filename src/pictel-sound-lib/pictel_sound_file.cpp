@@ -9,8 +9,9 @@
 
 using namespace PictelSound;
 
-PictelSoundFile::PictelSoundFile(DecoderI *decoder)
+PictelSoundFile::PictelSoundFile(DecoderI *decoder, SystemAudioI *systemAudio)
 :   m_decoder(decoder)
+,   m_systemAudio(systemAudio)
 {
 }
 
@@ -21,7 +22,18 @@ PictelSoundFile::~PictelSoundFile()
 
 bool PictelSoundFile::Open()
 {
-    return m_decoder->Open();
+    if (!m_decoder->Open())
+    {   return false;
+    }
+
+    m_systemAudio->SetDecoder(m_decoder);
+
+    char test[5555];
+    bzero(test, 5555);
+    unsigned int read = 0;
+    m_decoder->ReadBuffer(test, 5000, &read);
+
+    return true;
 }
 
 void PictelSoundFile::Close()

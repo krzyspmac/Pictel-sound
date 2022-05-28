@@ -18,6 +18,9 @@
 		7F0327472842760800E084AD /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032741284275F000E084AD /* libvorbis.a */; };
 		7F03274B284279BC00E084AD /* decoder_vorbis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032749284279BC00E084AD /* decoder_vorbis.cpp */; };
 		7F03274C284279BC00E084AD /* decoder_vorbis.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F03274A284279BC00E084AD /* decoder_vorbis.hpp */; };
+		7F0327512842836C00E084AD /* system_audio_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F03274F2842836C00E084AD /* system_audio_macos.mm */; };
+		7F0327522842836C00E084AD /* system_audio_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F0327502842836C00E084AD /* system_audio_macos.h */; };
+		7F032754284284FB00E084AD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032753284284FB00E084AD /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +59,12 @@
 		7F032740284275F000E084AD /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbisenc.a; sourceTree = "<group>"; };
 		7F032741284275F000E084AD /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbis.a; sourceTree = "<group>"; };
 		7F032743284275F000E084AD /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		7F0327482842794900E084AD /* decoder_interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decoder_interface.h; sourceTree = "<group>"; };
+		7F0327482842794900E084AD /* interfaces.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interfaces.h; sourceTree = "<group>"; };
 		7F032749284279BC00E084AD /* decoder_vorbis.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = decoder_vorbis.cpp; sourceTree = "<group>"; };
 		7F03274A284279BC00E084AD /* decoder_vorbis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = decoder_vorbis.hpp; sourceTree = "<group>"; };
+		7F03274F2842836C00E084AD /* system_audio_macos.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = system_audio_macos.mm; sourceTree = "<group>"; };
+		7F0327502842836C00E084AD /* system_audio_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_audio_macos.h; sourceTree = "<group>"; };
+		7F032753284284FB00E084AD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F032754284284FB00E084AD /* AudioToolbox.framework in Frameworks */,
 				7F0327442842760300E084AD /* libvorbisfile.a in Frameworks */,
 				7F0327452842760500E084AD /* libogg.a in Frameworks */,
 				7F0327462842760600E084AD /* libvorbisenc.a in Frameworks */,
@@ -120,9 +127,10 @@
 				7F0326FF2842619500E084AD /* pictel_sound_library.cpp */,
 				7F032717284264D800E084AD /* pictel_sound_file.hpp */,
 				7F032716284264D800E084AD /* pictel_sound_file.cpp */,
-				7F0327482842794900E084AD /* decoder_interface.h */,
+				7F0327482842794900E084AD /* interfaces.h */,
 				7F03274A284279BC00E084AD /* decoder_vorbis.hpp */,
 				7F032749284279BC00E084AD /* decoder_vorbis.cpp */,
+				7F03274D2842836200E084AD /* platform */,
 			);
 			path = "pictel-sound-lib";
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 		7F0327142842622500E084AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F032753284284FB00E084AD /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,6 +213,23 @@
 			path = linux;
 			sourceTree = "<group>";
 		};
+		7F03274D2842836200E084AD /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				7F03274E2842836200E084AD /* macos */,
+			);
+			path = platform;
+			sourceTree = "<group>";
+		};
+		7F03274E2842836200E084AD /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				7F0327502842836C00E084AD /* system_audio_macos.h */,
+				7F03274F2842836C00E084AD /* system_audio_macos.mm */,
+			);
+			path = macos;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -212,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F03274C284279BC00E084AD /* decoder_vorbis.hpp in Headers */,
+				7F0327522842836C00E084AD /* system_audio_macos.h in Headers */,
 				7F032719284264D800E084AD /* pictel_sound_file.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +325,7 @@
 				7F03274B284279BC00E084AD /* decoder_vorbis.cpp in Sources */,
 				7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */,
 				7F032718284264D800E084AD /* pictel_sound_file.cpp in Sources */,
+				7F0327512842836C00E084AD /* system_audio_macos.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

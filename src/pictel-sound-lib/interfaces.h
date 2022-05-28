@@ -17,9 +17,24 @@ namespace PictelSound
     public:
         DecoderI(std::string path) { };
         virtual ~DecoderI() { };
-        
+
         virtual bool Open() = 0;
         virtual void Close() = 0;
+
+        virtual double GetRate() = 0;
+        virtual uint32_t GetChannels() = 0;
+
+        virtual bool ReadBuffer(void *buffer, unsigned int capacity, unsigned int *outTotalBytesRead) = 0;
+    };
+
+    class SystemAudioI
+    {
+        DecoderI *m_decoder;
+    public:
+        SystemAudioI() { };
+        virtual ~SystemAudioI() { };
+
+        virtual void SetDecoder(DecoderI*) = 0;
     };
 };
 

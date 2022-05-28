@@ -7,9 +7,7 @@
 
 #include "decoder_vorbis.hpp"
 
-#define PICTEL_BITS_PER_BYTE 8
-#define PICTEL_BYTES_TO_BITS(bytes) ((bytes) * IDZ_BITS_PER_BYTE)
-#define PICTEL_OGG_VORBIS_WORDSIZE 2
+#define IDZ_OGG_VORBIS_WORDSIZE 2
 
 using namespace PictelSound;
 
@@ -17,6 +15,7 @@ DecoderVorbis::DecoderVorbis(std::string path)
 :   DecoderI(path)
 ,   m_path(path)
 ,   m_file(NULL)
+,   m_OggVorbisInfo(NULL)
 {
 }
 
@@ -38,10 +37,19 @@ bool DecoderVorbis::Open()
         return false;
     }
 
-    vorbis_info *pInfo = ov_info(&m_OggVorbisFile, -1);
-    int bytesPerChannel = PICTEL_OGG_VORBIS_WORDSIZE;
+    m_OggVorbisInfo = ov_info(&m_OggVorbisFile, -1);
 
     return true;
+}
+
+double DecoderVorbis::GetRate()
+{
+    return m_OggVorbisInfo->rate;
+}
+
+uint32_t DecoderVorbis::GetChannels()
+{
+    return m_OggVorbisInfo->channels;
 }
 
 void DecoderVorbis::Close()
@@ -52,4 +60,40 @@ void DecoderVorbis::Close()
 
         ov_clear(&m_OggVorbisFile);
     }
+}
+
+bool DecoderVorbis::ReadBuffer(void *buffer, unsigned int capacity, unsigned int *outTotalBytesRead)
+{
+    int bigEndian = 0;
+    int wordSize = IDZ_OGG_VORBIS_WORDSIZE;
+    int signedSamples = 1;
+    int currentSection = -1;
+
+    *outTotalBytesRead = 0;
+
+    unsigned int nTotalBytesRead = 0;
+    long nBytesRead = 0;
+    do
+    {
+        nBytesRead = ov_read(&m_OggVorbisFile,
+                             (char*)buffer + nTotalBytesRead,
+                             (int)(capacity - nTotalBytesRead),
+                             bigEndian, wordSize,
+                             signedSamples, &currentSection);
+        if(nBytesRead  <= 0)
+            break;
+        nTotalBytesRead += nBytesRead;
+    } while(nTotalBytesRead < capacity);
+
+    if (nTotalBytesRead == 0)
+    {   return false;
+    }
+
+    if (nBytesRead < 0)
+    {   return false;
+    }
+
+    *outTotalBytesRead = nTotalBytesRead;
+
+    return true;
 }

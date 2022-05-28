@@ -9,16 +9,17 @@
 #define pictel_sound_file_hpp
 
 #include <iostream>
-#include "decoder_interface.h"
+#include "interfaces.h"
 
 namespace PictelSound
 {
     class PictelSoundFile
     {
         DecoderI *m_decoder;
+        SystemAudioI *m_systemAudio;
     public:
         /** The default initializer. Takes ownership of the DecoderI provided */
-        PictelSoundFile(DecoderI*);
+        PictelSoundFile(DecoderI*, SystemAudioI*);
         ~PictelSoundFile();
 
     public:

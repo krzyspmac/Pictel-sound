@@ -5,6 +5,7 @@
 #include "include/pictel_sound.h"
 #include "pictel_sound_file.hpp"
 #include "decoder_vorbis.hpp"
+#include "system_audio_macos.h"
 
 using namespace PictelSound;
 
@@ -14,7 +15,8 @@ static PictelSoundFile *PictelSoundFileConv(PictelSoundRef);
 PictelSoundRef PictelSoundOpenSound(const char *filename)
 {
     DecoderI *decoder = new DecoderVorbis(filename);
-    PictelSoundFile *reference = new PictelSoundFile(decoder);
+    SystemAudioI *systemAudio = new SystemAudio();
+    PictelSoundFile *reference = new PictelSoundFile(decoder, systemAudio);
     return reference;
 }
 
