@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7F0326EC2842616E00E084AD"
                BuildableName = "libPictel-sound.a"
-               BlueprintName = "Pictel-sound"
+               BlueprintName = "Pictel-sound-macos"
                ReferencedContainer = "container:Pictel-sound.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -52,7 +52,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7F0326EC2842616E00E084AD"
             BuildableName = "libPictel-sound.a"
-            BlueprintName = "Pictel-sound"
+            BlueprintName = "Pictel-sound-macos"
             ReferencedContainer = "container:Pictel-sound.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

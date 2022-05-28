@@ -2,6 +2,7 @@
 #include "pictel_sound.h"
 #include <ogg/config_types.h>
 #include <ogg/ogg.h>
+#include <vorbis/codec.h>
 
 int main()
 {
