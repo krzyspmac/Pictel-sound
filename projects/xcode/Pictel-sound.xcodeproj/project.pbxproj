@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0326FF2842619500E084AD /* pictel_sound_library.cpp */; };
+		7F0327112842621A00E084AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0327032842619500E084AD /* main.cpp */; };
+		7F0327152842622500E084AD /* libPictel-sound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0326ED2842616E00E084AD /* libPictel-sound.a */; };
+		7F032718284264D800E084AD /* pictel_sound_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032716284264D800E084AD /* pictel_sound_file.cpp */; };
+		7F032719284264D800E084AD /* pictel_sound_file.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F032717284264D800E084AD /* pictel_sound_file.hpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7F0327122842622100E084AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F0326E52842616E00E084AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F0326EC2842616E00E084AD;
+			remoteInfo = "Pictel-sound";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7F0327082842620C00E084AD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7F0326ED2842616E00E084AD /* libPictel-sound.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPictel-sound.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F0326FE2842619500E084AD /* pictel_sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pictel_sound.h; sourceTree = "<group>"; };
+		7F0326FF2842619500E084AD /* pictel_sound_library.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pictel_sound_library.cpp; sourceTree = "<group>"; };
+		7F0327032842619500E084AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Pictel-cmd-sample-app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F032716284264D800E084AD /* pictel_sound_file.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pictel_sound_file.cpp; sourceTree = "<group>"; };
+		7F032717284264D800E084AD /* pictel_sound_file.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pictel_sound_file.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7F0326EB2842616E00E084AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F0327072842620C00E084AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F0327152842622500E084AD /* libPictel-sound.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7F0326E42842616E00E084AD = {
+			isa = PBXGroup;
+			children = (
+				7F0326FB2842619500E084AD /* src */,
+				7F0326EE2842616E00E084AD /* Products */,
+				7F0327142842622500E084AD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7F0326EE2842616E00E084AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7F0326ED2842616E00E084AD /* libPictel-sound.a */,
+				7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7F0326FB2842619500E084AD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7F0326FC2842619500E084AD /* pictel-sound-lib */,
+				7F0327012842619500E084AD /* pictel-sound-sample */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		7F0326FC2842619500E084AD /* pictel-sound-lib */ = {
+			isa = PBXGroup;
+			children = (
+				7F0326FD2842619500E084AD /* include */,
+				7F0326FF2842619500E084AD /* pictel_sound_library.cpp */,
+				7F032717284264D800E084AD /* pictel_sound_file.hpp */,
+				7F032716284264D800E084AD /* pictel_sound_file.cpp */,
+			);
+			path = "pictel-sound-lib";
+			sourceTree = "<group>";
+		};
+		7F0326FD2842619500E084AD /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7F0326FE2842619500E084AD /* pictel_sound.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		7F0327012842619500E084AD /* pictel-sound-sample */ = {
+			isa = PBXGroup;
+			children = (
+				7F0327022842619500E084AD /* macos */,
+			);
+			path = "pictel-sound-sample";
+			sourceTree = "<group>";
+		};
+		7F0327022842619500E084AD /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				7F0327032842619500E084AD /* main.cpp */,
+			);
+			path = macos;
+			sourceTree = "<group>";
+		};
+		7F0327142842622500E084AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7F0326E92842616E00E084AD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F032719284264D800E084AD /* pictel_sound_file.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7F0326EC2842616E00E084AD /* Pictel-sound */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F0326F82842616E00E084AD /* Build configuration list for PBXNativeTarget "Pictel-sound" */;
+			buildPhases = (
+				7F0326E92842616E00E084AD /* Headers */,
+				7F0326EA2842616E00E084AD /* Sources */,
+				7F0326EB2842616E00E084AD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pictel-sound";
+			productName = "Pictel-sound";
+			productReference = 7F0326ED2842616E00E084AD /* libPictel-sound.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7F0327092842620C00E084AD /* Pictel-cmd-sample-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F03270E2842620C00E084AD /* Build configuration list for PBXNativeTarget "Pictel-cmd-sample-app" */;
+			buildPhases = (
+				7F0327062842620C00E084AD /* Sources */,
+				7F0327072842620C00E084AD /* Frameworks */,
+				7F0327082842620C00E084AD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F0327132842622100E084AD /* PBXTargetDependency */,
+			);
+			name = "Pictel-cmd-sample-app";
+			productName = "Pictel-cmd-sample-app";
+			productReference = 7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7F0326E52842616E00E084AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					7F0326EC2842616E00E084AD = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					7F0327092842620C00E084AD = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7F0326E82842616E00E084AD /* Build configuration list for PBXProject "Pictel-sound" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7F0326E42842616E00E084AD;
+			productRefGroup = 7F0326EE2842616E00E084AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7F0326EC2842616E00E084AD /* Pictel-sound */,
+				7F0327092842620C00E084AD /* Pictel-cmd-sample-app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7F0326EA2842616E00E084AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */,
+				7F032718284264D800E084AD /* pictel_sound_file.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F0327062842620C00E084AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F0327112842621A00E084AD /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7F0327132842622100E084AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F0326EC2842616E00E084AD /* Pictel-sound */;
+			targetProxy = 7F0327122842622100E084AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7F0326F62842616E00E084AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7F0326F72842616E00E084AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7F0326F92842616E00E084AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7F0326FA2842616E00E084AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7F03270F2842620C00E084AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7F0327102842620C00E084AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7F0326E82842616E00E084AD /* Build configuration list for PBXProject "Pictel-sound" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F0326F62842616E00E084AD /* Debug */,
+				7F0326F72842616E00E084AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F0326F82842616E00E084AD /* Build configuration list for PBXNativeTarget "Pictel-sound" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F0326F92842616E00E084AD /* Debug */,
+				7F0326FA2842616E00E084AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F03270E2842620C00E084AD /* Build configuration list for PBXNativeTarget "Pictel-cmd-sample-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F03270F2842620C00E084AD /* Debug */,
+				7F0327102842620C00E084AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7F0326E52842616E00E084AD /* Project object */;
+}
