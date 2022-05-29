@@ -1,49 +1,26 @@
-#include <iostream>
-#include "pictel_sound.h"
-#include <ogg/config_types.h>
-#include <ogg/ogg.h>
-#include <vorbis/codec.h>
 #import <Foundation/Foundation.h>
+#include <iostream>
 #include <stdio.h>
+#include "pictel_sound.h"
 #include "pictel_sound.hpp"
 
 static void RunQueueForTimeInterval(NSTimeInterval);
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << "Hello, World!" << std::endl;
+    const char * path = argv[1];
+    NSLog(@"Opening file %s", path);
 
-    const char * path = "/Users/krzysp/Documents/Projekty/Programistyczne/Pictel-sound/resources/Rondo_Alla_Turka.ogg";
-    const char * path1 = "/Users/krzysp/Desktop/ogg-sample.ogg";
-
+    // Open the sound file
     PictelSoundRef shortFile = PictelSoundOpenSound(path);
-    printf("ref = %ld\n", (long)shortFile);
-    printf("path = %s\n", PictelSoundGetPath(shortFile));
-//    PictelSoundOpen(shortFile);
-//    PictelSoundPlay(shortFile);
+    PictelSoundOpen(shortFile);
+    PictelSoundPlay(shortFile);
 
-
-//    PictelSoundRef longMusic = PictelSoundOpenSound(path1);
-//    PictelSoundOpen(longMusic);
-//    PictelSoundPlay(longMusic);
-//    RunQueueForTimeInterval(2);
-//    PictelSoundSetVolume(longMusic, 0.5);
-//    RunQueueForTimeInterval(5);
-//    PictelSoundSetVolume(longMusic, 1);
-//    RunQueueForTimeInterval(5);
-//
-//
-//
-//    PictelSoundRelease(longMusic);
-
-    auto *longFile = PictelSound::PlayerI::CreateFromFile(path1);
-    longFile->Open();
-    longFile->Play();
-
+    // Run the main queue for a couple of seconds
     RunQueueForTimeInterval(5);
 
+    // Release memory, play nice.
     PictelSoundRelease(shortFile);
-    delete longFile;
 
     return 0;
 }

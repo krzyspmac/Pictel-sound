@@ -73,6 +73,7 @@
 		7F03275628437B7A00E084AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7F03275728437B7A00E084AD /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		7F03275C2843B54600E084AD /* pictel_sound.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pictel_sound.hpp; sourceTree = "<group>"; };
+		7F03275E2843B7DB00E084AD /* Rondo_Alla_Turka.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rondo_Alla_Turka.ogg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 			children = (
 				7F0326FB2842619500E084AD /* src */,
 				7F0326EE2842616E00E084AD /* Products */,
+				7F03275D2843B7DB00E084AD /* resources */,
 				7F032739284275DE00E084AD /* Dependencies */,
 				7F0327142842622500E084AD /* Frameworks */,
 			);
@@ -244,6 +246,15 @@
 				7F03274F2842836C00E084AD /* system_audio_macos.mm */,
 			);
 			path = macos;
+			sourceTree = "<group>";
+		};
+		7F03275D2843B7DB00E084AD /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				7F03275E2843B7DB00E084AD /* Rondo_Alla_Turka.ogg */,
+			);
+			name = resources;
+			path = ../../resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
