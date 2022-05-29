@@ -28,12 +28,17 @@ bool PictelSoundFile::Open()
 
     m_systemAudio->SetDecoder(m_decoder);
 
-    char test[5555];
-    bzero(test, 5555);
-    unsigned int read = 0;
-    m_decoder->ReadBuffer(test, 5000, &read);
-
     return true;
+}
+
+void PictelSoundFile::PrepareToPlay()
+{
+    m_systemAudio->PrepareToPlay();
+}
+
+void PictelSoundFile::Play()
+{
+    m_systemAudio->Play();
 }
 
 void PictelSoundFile::Close()

@@ -11,15 +11,32 @@
 #include <stdio.h>
 #include "interfaces.h"
 
+/** Apple uses 3 buffers in the AQPlayer example. We'll do the same.
+ * See: http://developer.apple.com/library/ios/#samplecode/SpeakHere/Listings/Classes_AQPlayer_mm.html
+ */
+#define PICTEL_BUFFER_COUNT 3
+#define PICTEL_BUFFER_SIZE 128 * 1024
+#define PICTEL_DEFAULT_BUFFER_SIZE 2048
+
 namespace PictelSound
 {
     class SystemAudio: public SystemAudioI
     {
-        char m_audioDescription[1024];
-    public:
+        char m_audioDescription[PICTEL_DEFAULT_BUFFER_SIZE];
+        void *m_queue;
+        void *m_buffers[PICTEL_BUFFER_COUNT];
+        DecoderI *m_decoder;
+    public: /** SystemAudioI */
         SystemAudio();
         ~SystemAudio();
         void SetDecoder(DecoderI *decoder);
+        void PrepareToPlay();
+        void Play();
+        bool QueryIsRunning();
+        double GetDuration();
+    public:
+        /** Read bytes into the system-prepared buffer. The pointer is system-specific. */
+        void ReadBufferInto(void*);
     };
 };
 

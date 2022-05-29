@@ -52,6 +52,12 @@ uint32_t DecoderVorbis::GetChannels()
     return m_OggVorbisInfo->channels;
 }
 
+double DecoderVorbis::GetDuration()
+{
+    double duration = ov_time_total(&m_OggVorbisFile, -1);
+    return duration;
+}
+
 void DecoderVorbis::Close()
 {
     if (m_file != NULL)

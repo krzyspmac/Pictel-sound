@@ -36,6 +36,16 @@ bool PictelSoundOpen(PictelSoundRef ref)
     return REF2OBJ(ref)->Open();
 }
 
+void PictelSoundPrepare(PictelSoundRef ref)
+{
+    REF2OBJ(ref)->PrepareToPlay();
+}
+
+void PictelSoundPlay(PictelSoundRef ref)
+{
+    REF2OBJ(ref)->Play();
+}
+
 PictelSoundFile *PictelSoundFileConv(PictelSoundRef ref)
 {
     return static_cast<PictelSoundFile*>(ref);

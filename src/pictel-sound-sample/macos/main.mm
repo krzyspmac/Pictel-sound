@@ -3,6 +3,8 @@
 #include <ogg/config_types.h>
 #include <ogg/ogg.h>
 #include <vorbis/codec.h>
+#import <Foundation/Foundation.h>
+#include <stdio.h>
 
 int main()
 {
@@ -13,8 +15,15 @@ int main()
     printf("ref = %ld\n", (long)ref);
     printf("path = %s\n", PictelSoundGetPath(ref));
     PictelSoundOpen(ref);
-    PictelSoundRelease(ref);
+    PictelSoundPrepare(ref);
+    PictelSoundPlay(ref);
 
-//    std::cout << "My Pictel Function " << MyPictelFunction() << std::endl;
+    NSDate *dateStarted = [NSDate date];
+    while ( fabs([dateStarted timeIntervalSinceNow]) < 50 )
+    {
+        printf("Runloop running...\n");
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+
     return 0;
 }

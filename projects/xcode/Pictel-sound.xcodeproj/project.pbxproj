@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0326FF2842619500E084AD /* pictel_sound_library.cpp */; };
-		7F0327112842621A00E084AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0327032842619500E084AD /* main.cpp */; };
+		7F0327112842621A00E084AD /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F0327032842619500E084AD /* main.mm */; };
 		7F032718284264D800E084AD /* pictel_sound_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032716284264D800E084AD /* pictel_sound_file.cpp */; };
 		7F032719284264D800E084AD /* pictel_sound_file.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F032717284264D800E084AD /* pictel_sound_file.hpp */; };
 		7F03271B284274A900E084AD /* libPictel-sound-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */; };
@@ -21,6 +21,11 @@
 		7F0327512842836C00E084AD /* system_audio_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F03274F2842836C00E084AD /* system_audio_macos.mm */; };
 		7F0327522842836C00E084AD /* system_audio_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F0327502842836C00E084AD /* system_audio_macos.h */; };
 		7F032754284284FB00E084AD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032753284284FB00E084AD /* AudioToolbox.framework */; };
+		7F03275528437A5600E084AD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032753284284FB00E084AD /* AudioToolbox.framework */; };
+		7F03275828437B7A00E084AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275628437B7A00E084AD /* Foundation.framework */; };
+		7F03275928437B7A00E084AD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275728437B7A00E084AD /* CoreFoundation.framework */; };
+		7F03275A28437BA000E084AD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275728437B7A00E084AD /* CoreFoundation.framework */; };
+		7F03275B28437BA000E084AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275628437B7A00E084AD /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +54,7 @@
 		7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPictel-sound-macos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F0326FE2842619500E084AD /* pictel_sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pictel_sound.h; sourceTree = "<group>"; };
 		7F0326FF2842619500E084AD /* pictel_sound_library.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pictel_sound_library.cpp; sourceTree = "<group>"; };
-		7F0327032842619500E084AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7F0327032842619500E084AD /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Pictel-cmd-sample-app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F032716284264D800E084AD /* pictel_sound_file.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pictel_sound_file.cpp; sourceTree = "<group>"; };
 		7F032717284264D800E084AD /* pictel_sound_file.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pictel_sound_file.hpp; sourceTree = "<group>"; };
@@ -65,6 +70,8 @@
 		7F03274F2842836C00E084AD /* system_audio_macos.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = system_audio_macos.mm; sourceTree = "<group>"; };
 		7F0327502842836C00E084AD /* system_audio_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_audio_macos.h; sourceTree = "<group>"; };
 		7F032753284284FB00E084AD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7F03275628437B7A00E084AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7F03275728437B7A00E084AD /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F03275828437B7A00E084AD /* Foundation.framework in Frameworks */,
+				7F03275928437B7A00E084AD /* CoreFoundation.framework in Frameworks */,
 				7F032754284284FB00E084AD /* AudioToolbox.framework in Frameworks */,
 				7F0327442842760300E084AD /* libvorbisfile.a in Frameworks */,
 				7F0327452842760500E084AD /* libogg.a in Frameworks */,
@@ -84,6 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F03275A28437BA000E084AD /* CoreFoundation.framework in Frameworks */,
+				7F03275B28437BA000E084AD /* Foundation.framework in Frameworks */,
+				7F03275528437A5600E084AD /* AudioToolbox.framework in Frameworks */,
 				7F03271B284274A900E084AD /* libPictel-sound-macos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,7 +166,7 @@
 		7F0327022842619500E084AD /* macos */ = {
 			isa = PBXGroup;
 			children = (
-				7F0327032842619500E084AD /* main.cpp */,
+				7F0327032842619500E084AD /* main.mm */,
 			);
 			path = macos;
 			sourceTree = "<group>";
@@ -162,6 +174,8 @@
 		7F0327142842622500E084AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F03275728437B7A00E084AD /* CoreFoundation.framework */,
+				7F03275628437B7A00E084AD /* Foundation.framework */,
 				7F032753284284FB00E084AD /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
@@ -333,7 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F0327112842621A00E084AD /* main.cpp in Sources */,
+				7F0327112842621A00E084AD /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

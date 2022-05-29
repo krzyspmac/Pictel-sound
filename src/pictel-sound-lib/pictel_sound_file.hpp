@@ -24,6 +24,8 @@ namespace PictelSound
 
     public:
         bool Open();
+        void PrepareToPlay();
+        void Play();
         void Close();
 
     public:

@@ -23,6 +23,7 @@ namespace PictelSound
 
         virtual double GetRate() = 0;
         virtual uint32_t GetChannels() = 0;
+        virtual double GetDuration() = 0;
 
         virtual bool ReadBuffer(void *buffer, unsigned int capacity, unsigned int *outTotalBytesRead) = 0;
     };
@@ -35,6 +36,10 @@ namespace PictelSound
         virtual ~SystemAudioI() { };
 
         virtual void SetDecoder(DecoderI*) = 0;
+        virtual void PrepareToPlay() = 0;
+        virtual void Play() = 0;
+        virtual bool QueryIsRunning() = 0;
+        virtual double GetDuration() = 0;
     };
 };
 
