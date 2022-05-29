@@ -1,2 +1,3 @@
 This folder contains already compiled versions of ogg/vorbis for various platforms.
-Should you need to update them, please read the install.sh thoroughly.
+Should you need to update them, please read the ogg-vorbis-macos-make.sh thoroughly.
+The script builds the libraries for MacOS/iOS (both ARM and x86_64).
