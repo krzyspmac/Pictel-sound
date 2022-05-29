@@ -3,7 +3,7 @@
 //
 
 #include "include/pictel_sound.h"
-#include "pictel_sound_file.hpp"
+#include "player.hpp"
 #include "decoder_vorbis.hpp"
 #include "system_audio_macos.h"
 
@@ -36,14 +36,19 @@ bool PictelSoundOpen(PictelSoundRef ref)
     return REF2OBJ(ref)->Open();
 }
 
-void PictelSoundPrepare(PictelSoundRef ref)
-{
-    REF2OBJ(ref)->PrepareToPlay();
-}
-
 void PictelSoundPlay(PictelSoundRef ref)
 {
     REF2OBJ(ref)->Play();
+}
+
+void PictelSoundPause(PictelSoundRef ref)
+{
+    REF2OBJ(ref)->Pause();
+}
+
+void PictelSoundStop(PictelSoundRef ref)
+{
+    REF2OBJ(ref)->Stop();
 }
 
 PictelSoundFile *PictelSoundFileConv(PictelSoundRef ref)

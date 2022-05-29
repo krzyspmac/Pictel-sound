@@ -13,7 +13,7 @@
 
 namespace PictelSound
 {
-    class PictelSoundFile
+    class PictelSoundFile: public PlayerI
     {
         DecoderI *m_decoder;
         SystemAudioI *m_systemAudio;
@@ -24,9 +24,11 @@ namespace PictelSound
 
     public:
         bool Open();
-        void PrepareToPlay();
         void Play();
+        void Pause();
+        void Stop();
         void Close();
+        PlayerState GetState();
 
     public:
 //        std::string& GetPath() { return m_path; };

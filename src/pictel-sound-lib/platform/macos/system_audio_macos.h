@@ -26,17 +26,27 @@ namespace PictelSound
         void *m_queue;
         void *m_buffers[PICTEL_BUFFER_COUNT];
         DecoderI *m_decoder;
+        PlayerState m_playerState;
     public: /** SystemAudioI */
         SystemAudio();
         ~SystemAudio();
         void SetDecoder(DecoderI *decoder);
         void PrepareToPlay();
         void Play();
+        void Pause();
+        void Stop();
+        void Free();
+        PlayerState GetState();
         bool QueryIsRunning();
         double GetDuration();
     public:
         /** Read bytes into the system-prepared buffer. The pointer is system-specific. */
         void ReadBufferInto(void*);
+
+        void SignalDidFinish();
+    private:
+        /** Sets the state. Will invoke the listener callback. */
+        void SetState(PlayerState);
     };
 };
 

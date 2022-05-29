@@ -5,12 +5,13 @@
 //  Created by krzysp on 28/05/2022.
 //
 
-#include "pictel_sound_file.hpp"
+#include "player.hpp"
 
 using namespace PictelSound;
 
 PictelSoundFile::PictelSoundFile(DecoderI *decoder, SystemAudioI *systemAudio)
-:   m_decoder(decoder)
+:   PlayerI(decoder, systemAudio)
+,   m_decoder(decoder)
 ,   m_systemAudio(systemAudio)
 {
 }
@@ -27,13 +28,8 @@ bool PictelSoundFile::Open()
     }
 
     m_systemAudio->SetDecoder(m_decoder);
-
-    return true;
-}
-
-void PictelSoundFile::PrepareToPlay()
-{
     m_systemAudio->PrepareToPlay();
+    return true;
 }
 
 void PictelSoundFile::Play()
@@ -41,11 +37,32 @@ void PictelSoundFile::Play()
     m_systemAudio->Play();
 }
 
+void PictelSoundFile::Pause()
+{
+    m_systemAudio->Pause();
+}
+
+void PictelSoundFile::Stop()
+{
+    m_systemAudio->Stop();
+}
+
 void PictelSoundFile::Close()
 {
+    if (m_systemAudio != nullptr)
+    {   m_systemAudio->Stop();
+        m_systemAudio->Free();
+        delete m_systemAudio;
+    }
+
     if (m_decoder != nullptr)
     {   m_decoder->Close();
         delete m_decoder;
         m_decoder = NULL;
     }
+}
+
+PlayerState PictelSoundFile::GetState()
+{
+    return PLAYER_STOPPED;
 }

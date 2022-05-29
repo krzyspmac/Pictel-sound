@@ -24,10 +24,13 @@ const char *PictelSoundGetPath(PictelSoundRef);
 /** Open the file */
 bool PictelSoundOpen(PictelSoundRef);
 
-/** Prep the file for playing */
-void PictelSoundPrepare(PictelSoundRef);
-
-/** Prep the file for playing */
+/** Play the sound file */
 void PictelSoundPlay(PictelSoundRef);
+
+/** Pause the sound file */
+void PictelSoundPause(PictelSoundRef);
+
+/** Stop the sound file */
+void PictelSoundStop(PictelSoundRef);
 
 #endif //PICTEL_SOUND_H

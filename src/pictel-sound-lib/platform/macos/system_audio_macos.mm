@@ -15,6 +15,7 @@ using namespace PictelSound;
 #define PICTEL_BITS_PER_BYTE 8
 #define PICTEL_BYTES_TO_BITS(bytes) ((bytes) * PICTEL_BITS_PER_BYTE)
 #define PICTEL_OGG_VORBIS_WORDSIZE 2
+#define PICTEL_AUDIO_BUFFER_SIZE 128  * 1024
 
 /** Static callbacks */
 static void PictelOutputCallback(void *                  inUserData,
@@ -28,6 +29,7 @@ static void PictelPropertyListener(void*                 inUserData,
 SystemAudio::SystemAudio()
 :   SystemAudioI()
 ,   m_decoder(NULL)
+,   m_playerState(PLAYER_STOPPED)
 {
     bzero(&m_audioDescription, PICTEL_DEFAULT_BUFFER_SIZE);
     bzero(&m_buffers, sizeof(m_buffers));
@@ -35,6 +37,13 @@ SystemAudio::SystemAudio()
 
 SystemAudio::~SystemAudio()
 {
+    Stop();
+    Free();
+}
+
+void SystemAudio::SetState(PlayerState state)
+{
+    m_playerState = state;
 }
 
 void SystemAudio::SetDecoder(DecoderI *decoder)
@@ -88,11 +97,11 @@ void SystemAudio::SetDecoder(DecoderI *decoder)
         // buffer setup
         for(int i = 0; i < PICTEL_BUFFER_COUNT; ++i)
         {
-            UInt32 bufferSize = 128 * 1024;
+            UInt32 bufferSize = PICTEL_AUDIO_BUFFER_SIZE;
             AudioQueueBufferRef buffer;
             OSStatus status = AudioQueueAllocateBuffer(queue, bufferSize, &buffer);
             if(status != noErr)
-            { printf("Could not alocate buffer!\n");
+            {   printf("Could not alocate buffer!\n");
                 AudioQueueDispose(queue, true);
                 m_queue = 0;
                 return;
@@ -110,8 +119,8 @@ void SystemAudio::PrepareToPlay()
         AudioQueueBufferRef buffer = (AudioQueueBufferRef)m_buffers[i];
         ReadBufferInto(buffer);
     }
-//    self.state = IDZAudioPlayerStatePrepared;
-//    return YES;
+
+    SetState(PLAYER_PREPARED);
 }
 
 void SystemAudio::ReadBufferInto(void *ptr)
@@ -120,47 +129,110 @@ void SystemAudio::ReadBufferInto(void *ptr)
     {   return;
     }
 
+    if (m_playerState == PLAYER_STOPPING)
+    {   return;
+    }
+
     AudioQueueBufferRef pBuffer = (AudioQueueBufferRef)ptr;
+    if (pBuffer == nullptr)
+    {   return;
+    }
+
     unsigned int nTotalBytesRead = 0;
     m_decoder->ReadBuffer((char*)pBuffer->mAudioData,
                           (unsigned int)pBuffer->mAudioDataBytesCapacity,
                           &nTotalBytesRead);
     if (nTotalBytesRead < 1)
     {   printf("Did not read any bytes!\n");
-
-        /*
-         * Signal to the audio queue that we have run out of data,
-         * but set the immediate flag to false so that playback of
-         * currently enqueued buffers completes.
-         */
-//        self.state = IDZAudioPlayerStateStopping;
-//        Boolean immediate = false;
-//        AudioQueueStop(mQueue, immediate);
-
+        AudioQueueStop((AudioQueueRef)m_queue, false);
+        SetState(PLAYER_STOPPING);
         return;
     }
 
     pBuffer->mAudioDataByteSize = nTotalBytesRead;
     pBuffer->mPacketDescriptionCount = 0;
+    printf("Read %d bytes\n", nTotalBytesRead);
 
     AudioQueueRef queue = (AudioQueueRef)m_queue;
     OSStatus status = AudioQueueEnqueueBuffer(queue, pBuffer, 0, 0);
     if(status != noErr)
     {
-        NSLog(@"Error: %s status=%d", __PRETTY_FUNCTION__, (int)status);
+        printf("Error: %s status=%d\n", __PRETTY_FUNCTION__, (int)status);
     }
-
 }
 
 void SystemAudio::Play()
 {
+    switch (m_playerState)
+    {
+        case PLAYER_STOPPED:    return;;
+        case PLAYER_PREPARED:   break;
+        case PLAYER_PLAYING:    return;
+        case PLAYER_PAUSED:     break;
+        case PLAYER_STOPPING:   return;
+        case PLAYER_DISCARDED:  return;
+    }
+
     AudioQueueRef queue = (AudioQueueRef)m_queue;
     OSStatus osStatus = AudioQueueStart(queue, NULL);
-    printf("Started\n");
-//    NSAssert(osStatus == noErr, @"AudioQueueStart failed");
-//    self.state = IDZAudioPlayerStatePlaying;
-//    self.playing = YES;
-//    return (osStatus == noErr);
+    if (osStatus != noErr)
+    {   printf("Could not start audio queue.\n");
+        return;
+    }
+
+    SetState(PLAYER_PLAYING);
+}
+
+void SystemAudio::Pause()
+{
+    if (m_playerState != PLAYER_PLAYING)
+    {   return;
+    }
+
+    OSStatus osStatus = AudioQueuePause((AudioQueueRef)m_queue);
+    if (osStatus != noErr)
+    {   printf("Could not pause audio queue.\n");
+        return;
+    }
+
+    SetState(PLAYER_PAUSED);
+}
+
+void SystemAudio::Stop()
+{
+    if (m_playerState != PLAYER_PLAYING)
+    {   return;
+    }
+
+    SetState(PLAYER_STOPPING);
+
+    OSStatus osStatus = AudioQueueStop((AudioQueueRef)m_queue, true);
+    if (osStatus != noErr)
+    {   printf("Could not stop audio queue, OSStatus=%d.\n", osStatus);
+        return;
+    }
+}
+
+void SystemAudio::Free()
+{
+    AudioQueueRef queue = (AudioQueueRef)m_queue;
+    if (queue == NULL)
+    {   return;
+    }
+
+    for(int i = 0; i < PICTEL_BUFFER_COUNT; ++i)
+    {
+        AudioQueueBufferRef buffer = (AudioQueueBufferRef)m_buffers[i];
+        if (buffer != nullptr)
+        {   AudioQueueFreeBuffer(queue, buffer);
+            m_buffers[i] = NULL;
+        }
+    }
+
+    AudioQueueDispose(queue, true);
+    m_queue = NULL;
+
+    SetState(PLAYER_DISCARDED);
 }
 
 bool SystemAudio::QueryIsRunning()
@@ -168,13 +240,24 @@ bool SystemAudio::QueryIsRunning()
     UInt32 oRunning = 0;
     UInt32 ioSize = sizeof(oRunning);
     AudioQueueRef queue = (AudioQueueRef)m_queue;
-    OSStatus result = AudioQueueGetProperty(queue, kAudioQueueProperty_IsRunning, &oRunning, &ioSize);
+    AudioQueueGetProperty(queue, kAudioQueueProperty_IsRunning, &oRunning, &ioSize);
     return oRunning;
 }
 
 double SystemAudio::GetDuration()
 {
     return m_decoder->GetDuration();
+}
+
+PlayerState SystemAudio::GetState()
+{
+    return m_playerState;
+}
+
+void SystemAudio::SignalDidFinish()
+{
+    printf("Did finish signal received\n");
+    SetState(PLAYER_STOPPED);
 }
 
 /** Static callbacks */
@@ -198,19 +281,16 @@ static void PictelPropertyListener(void*                 inUserData,
         bool isRunning = pPlayer->QueryIsRunning();//[pPlayer queryIsRunning];
         printf("IsRunning = %d\n", isRunning);
         printf("Time to end = %f\n", pPlayer->GetDuration());
-//        NSLog(@"isRunning = %u", (unsigned int)isRunning);
-//        BOOL bDidFinish = (pPlayer.playing && !isRunning);
-//        pPlayer.playing = isRunning ? YES : NO;
-//        if(bDidFinish)
-//        {
-//            [pPlayer.delegate audioPlayerDidFinishPlaying:pPlayer
-//                                              successfully:YES];
-//            /*
-//             * To match AVPlayer's behavior we need to reset the file.
-//             */
-//            pPlayer.currentTime = 0;
-//        }
-//        if(!isRunning)
-//            pPlayer.state = IDZAudioPlayerStateStopped;
+
+        bool didFinish = pPlayer->GetState() == PLAYER_PLAYING && !isRunning;
+        if (didFinish)
+        {
+
+        }
+
+        if (!isRunning)
+        {
+            pPlayer->SignalDidFinish();
+        }
     }
 }
