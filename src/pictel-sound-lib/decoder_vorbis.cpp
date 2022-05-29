@@ -54,7 +54,11 @@ uint32_t DecoderVorbis::GetChannels()
 
 void DecoderVorbis::Seek(double position)
 {
-    ov_time_seek(&m_OggVorbisFile, position);
+    int result = ov_time_seek(&m_OggVorbisFile, position);
+    if (result < 0)
+    {   printf("Could not seek to %f\n", position);
+        return;
+    }
 }
 
 double DecoderVorbis::GetDuration()

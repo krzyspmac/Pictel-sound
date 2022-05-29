@@ -9,6 +9,7 @@
 #define pictel_sound_h
 
 #include <iostream>
+#include "pictel_sound.h"
 
 namespace PictelSound
 {
@@ -23,6 +24,8 @@ namespace PictelSound
         virtual void Pause() = 0;
         virtual void Stop() = 0;
         virtual void SetVolume(double) = 0;
+        virtual PlayerState GetState() = 0;
+        virtual void SetLoops(bool) = 0;
     };
 };
 

@@ -11,16 +11,21 @@ int main(int argc, char *argv[])
     const char * path = argv[1];
     NSLog(@"Opening file %s", path);
 
-    // Open the sound file
+    // C library usage
     PictelSoundRef shortFile = PictelSoundOpenSound(path);
     PictelSoundOpen(shortFile);
     PictelSoundPlay(shortFile);
-
-    // Run the main queue for a couple of seconds
-    RunQueueForTimeInterval(5);
-
-    // Release memory, play nice.
+    PictelSoundSetLoops(shortFile, true);
+    RunQueueForTimeInterval(15);
     PictelSoundRelease(shortFile);
+
+    // C++ libray usage
+//    auto *player = PictelSound::PlayerI::CreateFromFile(path);
+//    player->SetLoops(true);
+//    player->Open();
+//    player->Play();
+//    RunQueueForTimeInterval(15);
+//    delete player;
 
     return 0;
 }

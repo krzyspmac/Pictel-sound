@@ -7,6 +7,16 @@
 
 #include <stdio.h>
 
+typedef enum
+{
+    PLAYER_STOPPED      = 10,
+    PLAYER_PREPARED     = 11,
+    PLAYER_PLAYING      = 12,
+    PLAYER_PAUSED       = 13,
+    PLAYER_STOPPING     = 14,
+    PLAYER_DISCARDED    = 100
+} PlayerState;
+
 /** Defines a handler for the sound. All subsequent calls require it.
     When you're done with it, please release via PictelSoundRelease(ref).
  */
@@ -37,5 +47,11 @@ void PictelSoundStop(PictelSoundRef);
 
 /** Set volume. Values from 0 to 1. */
 void PictelSoundSetVolume(PictelSoundRef, double);
+
+/** Loop audio */
+void PictelSoundSetLoops(PictelSoundRef, bool);
+
+/** Get the player state */
+PlayerState PictelSoundGetPlayerState(PictelSoundRef);
 
 #endif //PICTEL_SOUND_H

@@ -9,6 +9,8 @@
 #define system_audio_macos_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <vector>
 #include "interfaces.h"
 
 /** Apple uses 3 buffers in the AQPlayer example. We'll do the same.
@@ -27,6 +29,7 @@ namespace PictelSound
         void *m_buffers[PICTEL_BUFFER_COUNT];
         DecoderI *m_decoder;
         PlayerState m_playerState;
+        bool m_loops;
     public: /** SystemAudioI */
         SystemAudio();
         ~SystemAudio();
@@ -40,6 +43,8 @@ namespace PictelSound
         bool QueryIsRunning();
         double GetDuration();
         void SetVolume(double);
+        void SetLoops(bool);
+    public: /** PlayerObserverI */
     public:
         /** Read bytes into the system-prepared buffer. The pointer is system-specific. */
         void ReadBufferInto(void*);

@@ -30,6 +30,7 @@ SystemAudio::SystemAudio()
 :   SystemAudioI()
 ,   m_decoder(NULL)
 ,   m_playerState(PLAYER_STOPPED)
+,   m_loops(false)
 {
     bzero(&m_audioDescription, PICTEL_DEFAULT_BUFFER_SIZE);
     bzero(&m_buffers, sizeof(m_buffers));
@@ -165,7 +166,7 @@ void SystemAudio::Play()
 {
     switch (m_playerState)
     {
-        case PLAYER_STOPPED:    return;;
+        case PLAYER_STOPPED:    break;
         case PLAYER_PREPARED:   break;
         case PLAYER_PLAYING:    return;
         case PLAYER_PAUSED:     break;
@@ -259,15 +260,22 @@ void SystemAudio::SetVolume(double value)
     AudioQueueSetParameter((AudioQueueRef)m_queue, kAudioQueueParam_Volume, value);
 }
 
+void SystemAudio::SetLoops(bool loops)
+{
+    m_loops = loops;
+}
+
 void SystemAudio::SignalDidFinish()
 {
     printf("Did finish signal received\n");
     SetState(PLAYER_STOPPED);
-
-    Free();
     m_decoder->Seek(0);
-    SetDecoder(m_decoder);
     PrepareToPlay();
+    SetState(PLAYER_PREPARED);
+
+    if (m_loops)
+    {   Play();
+    }
 }
 
 /** Static callbacks */
@@ -295,7 +303,6 @@ static void PictelPropertyListener(void*                 inUserData,
         bool didFinish = pPlayer->GetState() == PLAYER_PLAYING && !isRunning;
         if (didFinish)
         {
-
         }
 
         if (!isRunning)

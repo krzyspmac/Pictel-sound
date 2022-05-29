@@ -29,6 +29,8 @@ namespace PictelSound
         void Stop();
         void Close();
         void SetVolume(double);
+        void Seek(double);
+        void SetLoops(bool);
         PlayerState GetState();
     };
 };

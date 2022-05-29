@@ -56,6 +56,16 @@ void PictelSoundSetVolume(PictelSoundRef ref, double value)
     REF2OBJ(ref)->SetVolume(value);
 }
 
+void PictelSoundSetLoops(PictelSoundRef ref, bool value)
+{
+    REF2OBJ(ref)->SetLoops(value);
+}
+
+PlayerState PictelSoundGetPlayerState(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->GetState();
+}
+
 PlayerI *PlayerI::CreateFromFile(std::string path)
 {
     DecoderI *decoder = new DecoderVorbis(path);

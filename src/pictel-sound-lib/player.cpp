@@ -67,6 +67,11 @@ void Player::SetVolume(double value)
     m_systemAudio->SetVolume(value);
 }
 
+void Player::SetLoops(bool loops)
+{
+    m_systemAudio->SetLoops(loops);
+}
+
 PlayerState Player::GetState()
 {
     return PLAYER_STOPPED;

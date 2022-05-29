@@ -9,20 +9,11 @@
 #define pictel_sound_decoder_interface_h
 
 #include <iostream>
+#include "pictel_sound.h"
 #include "pictel_sound.hpp"
 
 namespace PictelSound
 {
-    typedef enum
-    {
-        PLAYER_STOPPED      = 10,
-        PLAYER_PREPARED     = 11,
-        PLAYER_PLAYING      = 12,
-        PLAYER_PAUSED       = 13,
-        PLAYER_STOPPING     = 14,
-        PLAYER_DISCARDED    = 100
-    } PlayerState;
-
     class DecoderI
     {
     public:
@@ -57,6 +48,7 @@ namespace PictelSound
         virtual double GetDuration() = 0;
         virtual PlayerState GetState() = 0;
         virtual void SetVolume(double) = 0;
+        virtual void SetLoops(bool) = 0;
     };
 
     class __PlayerI
@@ -70,6 +62,7 @@ namespace PictelSound
         virtual void Stop() = 0;
         virtual void Close() = 0;
         virtual void SetVolume(double) = 0;
+        virtual void SetLoops(bool) = 0;
 
         virtual PlayerState GetState() = 0;
     };
