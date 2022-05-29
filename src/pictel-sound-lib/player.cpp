@@ -9,19 +9,19 @@
 
 using namespace PictelSound;
 
-PictelSoundFile::PictelSoundFile(DecoderI *decoder, SystemAudioI *systemAudio)
-:   PlayerI(decoder, systemAudio)
+Player::Player(DecoderI *decoder, SystemAudioI *systemAudio)
+:   __PlayerI(decoder, systemAudio)
 ,   m_decoder(decoder)
 ,   m_systemAudio(systemAudio)
 {
 }
 
-PictelSoundFile::~PictelSoundFile()
+Player::~Player()
 {
     Close();
 }
 
-bool PictelSoundFile::Open()
+bool Player::Open()
 {
     if (!m_decoder->Open())
     {   return false;
@@ -32,22 +32,22 @@ bool PictelSoundFile::Open()
     return true;
 }
 
-void PictelSoundFile::Play()
+void Player::Play()
 {
     m_systemAudio->Play();
 }
 
-void PictelSoundFile::Pause()
+void Player::Pause()
 {
     m_systemAudio->Pause();
 }
 
-void PictelSoundFile::Stop()
+void Player::Stop()
 {
     m_systemAudio->Stop();
 }
 
-void PictelSoundFile::Close()
+void Player::Close()
 {
     if (m_systemAudio != nullptr)
     {   m_systemAudio->Stop();
@@ -62,7 +62,12 @@ void PictelSoundFile::Close()
     }
 }
 
-PlayerState PictelSoundFile::GetState()
+void Player::SetVolume(double value)
+{
+    m_systemAudio->SetVolume(value);
+}
+
+PlayerState Player::GetState()
 {
     return PLAYER_STOPPED;
 }

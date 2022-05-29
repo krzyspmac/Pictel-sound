@@ -254,10 +254,20 @@ PlayerState SystemAudio::GetState()
     return m_playerState;
 }
 
+void SystemAudio::SetVolume(double value)
+{
+    AudioQueueSetParameter((AudioQueueRef)m_queue, kAudioQueueParam_Volume, value);
+}
+
 void SystemAudio::SignalDidFinish()
 {
     printf("Did finish signal received\n");
     SetState(PLAYER_STOPPED);
+
+    Free();
+    m_decoder->Seek(0);
+    SetDecoder(m_decoder);
+    PrepareToPlay();
 }
 
 /** Static callbacks */

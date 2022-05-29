@@ -28,6 +28,7 @@ namespace PictelSound
         double GetRate();
         double GetDuration();
         uint32_t GetChannels();
+        void Seek(double position);
         bool ReadBuffer(void *buffer, unsigned int capacity, unsigned int *outTotalBytesRead);
     };
 };

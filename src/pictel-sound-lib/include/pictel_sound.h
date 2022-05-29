@@ -7,11 +7,13 @@
 
 #include <stdio.h>
 
-/** Defines a handler for the sound. All subsequent calls require it.*/
+/** Defines a handler for the sound. All subsequent calls require it.
+    When you're done with it, please release via PictelSoundRelease(ref).
+ */
 typedef void* PictelSoundRef;
 
 /** Open the file handle.
-    Return NULL upon error. */
+    Returns NULL upon error. */
 PictelSoundRef PictelSoundOpenSound(const char *);
 
 /** Release the file handle.
@@ -32,5 +34,8 @@ void PictelSoundPause(PictelSoundRef);
 
 /** Stop the sound file */
 void PictelSoundStop(PictelSoundRef);
+
+/** Set volume. Values from 0 to 1. */
+void PictelSoundSetVolume(PictelSoundRef, double);
 
 #endif //PICTEL_SOUND_H

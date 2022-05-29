@@ -9,14 +9,14 @@
 
 using namespace PictelSound;
 
-static PictelSoundFile *PictelSoundFileConv(PictelSoundRef);
+static Player *PictelSoundFileConv(PictelSoundRef);
 #define REF2OBJ(x) PictelSoundFileConv(x)
 
 PictelSoundRef PictelSoundOpenSound(const char *filename)
 {
     DecoderI *decoder = new DecoderVorbis(filename);
     SystemAudioI *systemAudio = new SystemAudio();
-    PictelSoundFile *reference = new PictelSoundFile(decoder, systemAudio);
+    Player *reference = new Player(decoder, systemAudio);
     return reference;
 }
 
@@ -51,7 +51,20 @@ void PictelSoundStop(PictelSoundRef ref)
     REF2OBJ(ref)->Stop();
 }
 
-PictelSoundFile *PictelSoundFileConv(PictelSoundRef ref)
+void PictelSoundSetVolume(PictelSoundRef ref, double value)
 {
-    return static_cast<PictelSoundFile*>(ref);
+    REF2OBJ(ref)->SetVolume(value);
+}
+
+PlayerI *PlayerI::CreateFromFile(std::string path)
+{
+    DecoderI *decoder = new DecoderVorbis(path);
+    SystemAudioI *systemAudio = new SystemAudio();
+    Player *reference = new Player(decoder, systemAudio);
+    return reference;
+}
+
+Player *PictelSoundFileConv(PictelSoundRef ref)
+{
+    return static_cast<Player*>(ref);
 }

@@ -13,14 +13,14 @@
 
 namespace PictelSound
 {
-    class PictelSoundFile: public PlayerI
+    class Player: public PlayerI, public __PlayerI
     {
         DecoderI *m_decoder;
         SystemAudioI *m_systemAudio;
     public:
         /** The default initializer. Takes ownership of the DecoderI provided */
-        PictelSoundFile(DecoderI*, SystemAudioI*);
-        ~PictelSoundFile();
+        Player(DecoderI*, SystemAudioI*);
+        ~Player();
 
     public:
         bool Open();
@@ -28,10 +28,8 @@ namespace PictelSound
         void Pause();
         void Stop();
         void Close();
+        void SetVolume(double);
         PlayerState GetState();
-
-    public:
-//        std::string& GetPath() { return m_path; };
     };
 };
 

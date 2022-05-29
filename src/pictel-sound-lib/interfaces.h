@@ -9,6 +9,7 @@
 #define pictel_sound_decoder_interface_h
 
 #include <iostream>
+#include "pictel_sound.hpp"
 
 namespace PictelSound
 {
@@ -34,6 +35,7 @@ namespace PictelSound
         virtual double GetRate() = 0;
         virtual uint32_t GetChannels() = 0;
         virtual double GetDuration() = 0;
+        virtual void Seek(double) = 0;
 
         virtual bool ReadBuffer(void *buffer, unsigned int capacity, unsigned int *outTotalBytesRead) = 0;
     };
@@ -54,18 +56,20 @@ namespace PictelSound
         virtual bool QueryIsRunning() = 0;
         virtual double GetDuration() = 0;
         virtual PlayerState GetState() = 0;
+        virtual void SetVolume(double) = 0;
     };
 
-    class PlayerI
+    class __PlayerI
     {
     public:
-        PlayerI(DecoderI*, SystemAudioI*) { };
+        __PlayerI(DecoderI*, SystemAudioI*) { };
 
         virtual bool Open() = 0;
         virtual void Play() = 0;
         virtual void Pause() = 0;
         virtual void Stop() = 0;
         virtual void Close() = 0;
+        virtual void SetVolume(double) = 0;
 
         virtual PlayerState GetState() = 0;
     };

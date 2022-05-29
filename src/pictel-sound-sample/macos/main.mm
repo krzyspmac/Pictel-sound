@@ -5,6 +5,7 @@
 #include <vorbis/codec.h>
 #import <Foundation/Foundation.h>
 #include <stdio.h>
+#include "pictel_sound.hpp"
 
 static void RunQueueForTimeInterval(NSTimeInterval);
 
@@ -15,33 +16,35 @@ int main()
     const char * path = "/Users/krzysp/Documents/Projekty/Programistyczne/Pictel-sound/resources/Rondo_Alla_Turka.ogg";
     const char * path1 = "/Users/krzysp/Desktop/ogg-sample.ogg";
 
-//    PictelSoundRef ref = PictelSoundOpenSound(path);
-//    printf("ref = %ld\n", (long)ref);
-//    printf("path = %s\n", PictelSoundGetPath(ref));
-//    PictelSoundOpen(ref);
-//    PictelSoundPlay(ref);
+    PictelSoundRef shortFile = PictelSoundOpenSound(path);
+    printf("ref = %ld\n", (long)shortFile);
+    printf("path = %s\n", PictelSoundGetPath(shortFile));
+//    PictelSoundOpen(shortFile);
+//    PictelSoundPlay(shortFile);
 
 
-    PictelSoundRef ref = PictelSoundOpenSound(path1);
-    printf("ref = %ld\n", (long)ref);
-    printf("path = %s\n", PictelSoundGetPath(ref));
-
-    PictelSoundOpen(ref);
-    PictelSoundPlay(ref);
-
-
-    RunQueueForTimeInterval(2);
-
-    PictelSoundPause(ref);
-    RunQueueForTimeInterval(1.5);
-
-    PictelSoundPlay(ref);
-    RunQueueForTimeInterval(3.5);
-
-    PictelSoundStop(ref);
+//    PictelSoundRef longMusic = PictelSoundOpenSound(path1);
+//    PictelSoundOpen(longMusic);
+//    PictelSoundPlay(longMusic);
+//    RunQueueForTimeInterval(2);
+//    PictelSoundSetVolume(longMusic, 0.5);
 //    RunQueueForTimeInterval(5);
+//    PictelSoundSetVolume(longMusic, 1);
+//    RunQueueForTimeInterval(5);
+//
+//
+//
+//    PictelSoundRelease(longMusic);
 
-    PictelSoundRelease(ref);
+    auto *longFile = PictelSound::PlayerI::CreateFromFile(path1);
+    longFile->Open();
+    longFile->Play();
+
+    RunQueueForTimeInterval(5);
+
+    PictelSoundRelease(shortFile);
+    delete longFile;
+
     return 0;
 }
 

@@ -39,6 +39,7 @@ namespace PictelSound
         PlayerState GetState();
         bool QueryIsRunning();
         double GetDuration();
+        void SetVolume(double);
     public:
         /** Read bytes into the system-prepared buffer. The pointer is system-specific. */
         void ReadBufferInto(void*);
