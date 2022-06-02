@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F0326EC2842616E00E084AD"
-               BuildableName = "libPictel-sound-macos.a"
-               BlueprintName = "Pictel-sound-macos"
+               BlueprintIdentifier = "7FBAD4202846A2F300E139FF"
+               BuildableName = "Pictel-iOS-sample.app"
+               BlueprintName = "Pictel-iOS-sample"
                ReferencedContainer = "container:Pictel-sound.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,6 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7FBAD4202846A2F300E139FF"
+            BuildableName = "Pictel-iOS-sample.app"
+            BlueprintName = "Pictel-iOS-sample"
+            ReferencedContainer = "container:Pictel-sound.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F0326EC2842616E00E084AD"
-            BuildableName = "libPictel-sound-macos.a"
-            BlueprintName = "Pictel-sound-macos"
+            BlueprintIdentifier = "7FBAD4202846A2F300E139FF"
+            BuildableName = "Pictel-iOS-sample.app"
+            BlueprintName = "Pictel-iOS-sample"
             ReferencedContainer = "container:Pictel-sound.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
