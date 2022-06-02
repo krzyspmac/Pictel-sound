@@ -90,5 +90,5 @@ pushd $STAGING
 lipo -create build-ios-sim-arm64/lib/vorbis.a build-ios-sim-x86_64/lib/vorbis.a -output vorbis-ios-sim.a
 lipo -create build-ios-device-armv7/lib/vorbis.a -output vorbis-ios-device.a
 lipo -create build-mac-x86_64/lib/vorbis.a build-mac-arm64/lib/vorbis.a -output vorbis-macos.a
-xcodebuild -create-xcframework -library vorbis-ios-sim.a -library vorbis-ios-device.a -library vorbis-macos.a -output vorbis.xcframework
+xcodebuild -create-xcframework -library vorbis-ios-sim.a -library vorbis-ios-device.a -library vorbis-macos.a -output Vorbis.xcframework
 popd
