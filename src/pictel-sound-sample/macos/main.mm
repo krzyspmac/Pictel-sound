@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     NSLog(@"Opening file %s", path);
 
     // C library usage
-    PictelSoundRef shortFile = PictelSoundOpenSound(path);
+    PictelSoundRef shortFile = PictelSoundCreate(path);
     PictelSoundOpen(shortFile);
     PictelSoundPlay(shortFile);
     PictelSoundSetLoops(shortFile, true);

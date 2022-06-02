@@ -1,21 +1,29 @@
 Pictel-sound
 ============
 
-An easy to use, simple, C/C++ crossplatform __ogg/vorbis__ audio player.
+What is it?
+-----------
 
-What is it
-----------
+An easy to use, simple, C/C++ crossplatform __ogg/vorbis__ audio player.
+__It can play ogg files only.__
+
+Why does it exist?
+------------------
 
 The library is written to support my custom, 2d engine
 [https://github.com/krzyspmac/Pictel](https://github.com/krzyspmac/Pictel) but can be
-used in any other project. __It can play ogg files only.__
+used in any other project.
 
 OGG/VORBIS
 ----------
 
 The library includes a statically compiled OGG and VORBIS libraries for all
-supported platforms. See
-[https://xiph.org/vorbis/](https://xiph.org/vorbis/) for more information.
+supported platforms. 
+
+Build scripts are provided for Xcode (MacOS/iOS Device/iOS Simulator).
+Windows, Linux & Android support coming at a later time.
+
+See [https://xiph.org/vorbis/](https://xiph.org/vorbis/) for more information.
 
 Completion
 ----------
@@ -23,7 +31,7 @@ Completion
 Not all platform specific code has been completed.
 
 [x] MacOS
-[ ] iOS
+[x] iOS
 [ ] Windows
 [ ] Linux
 
@@ -35,7 +43,7 @@ C
 ```
 #include "pictel_sound.h"
 
-PictelSoundRef file = PictelSoundOpenSound("path_to_file.ogg");
+PictelSoundRef file = PictelSoundCreate("path_to_file.ogg");
 PictelSoundOpen(file);
 PictelSoundPlay(file);
 

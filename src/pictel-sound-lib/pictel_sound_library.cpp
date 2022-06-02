@@ -29,7 +29,7 @@ using namespace PictelSound;
 static Player *PictelSoundFileConv(PictelSoundRef);
 #define REF2OBJ(x) PictelSoundFileConv(x)
 
-PictelSoundRef PictelSoundOpenSound(const char *filename)
+PictelSoundRef PictelSoundCreate(const char *filename)
 {
     DecoderI *decoder = new DecoderVorbis(filename);
     SystemAudioI *systemAudio = new SystemAudio();

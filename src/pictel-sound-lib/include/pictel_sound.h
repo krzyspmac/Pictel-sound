@@ -44,7 +44,7 @@ typedef void* PictelSoundRef;
 
 /** Open the file handle.
     Returns NULL upon error. */
-PictelSoundRef PictelSoundOpenSound(const char *);
+PictelSoundRef PictelSoundCreate(const char *);
 
 /** Release the file handle.
     This stops the audio and releases the memory. */

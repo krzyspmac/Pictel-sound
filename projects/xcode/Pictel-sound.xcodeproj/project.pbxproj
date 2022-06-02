@@ -6,16 +6,25 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		7FBAD4FD2848E3C000E139FF /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7FBAD4FE2848E3C000E139FF /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				7FBAD5052848E81500E139FF /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7F032704284261A400E084AD /* pictel_sound_library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0326FF2842619500E084AD /* pictel_sound_library.cpp */; };
 		7F0327112842621A00E084AD /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F0327032842619500E084AD /* main.mm */; };
 		7F032718284264D800E084AD /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032716284264D800E084AD /* player.cpp */; };
 		7F032719284264D800E084AD /* player.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F032717284264D800E084AD /* player.hpp */; };
-		7F03271B284274A900E084AD /* libPictel-sound-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */; };
-		7F0327442842760300E084AD /* libvorbisfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03273E284275F000E084AD /* libvorbisfile.a */; };
-		7F0327452842760500E084AD /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03273F284275F000E084AD /* libogg.a */; };
-		7F0327462842760600E084AD /* libvorbisenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032740284275F000E084AD /* libvorbisenc.a */; };
-		7F0327472842760800E084AD /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032741284275F000E084AD /* libvorbis.a */; };
 		7F03274B284279BC00E084AD /* decoder_vorbis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032749284279BC00E084AD /* decoder_vorbis.cpp */; };
 		7F03274C284279BC00E084AD /* decoder_vorbis.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F03274A284279BC00E084AD /* decoder_vorbis.hpp */; };
 		7F0327512842836C00E084AD /* system_audio_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F03274F2842836C00E084AD /* system_audio_macos.mm */; };
@@ -26,15 +35,49 @@
 		7F03275928437B7A00E084AD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275728437B7A00E084AD /* CoreFoundation.framework */; };
 		7F03275A28437BA000E084AD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275728437B7A00E084AD /* CoreFoundation.framework */; };
 		7F03275B28437BA000E084AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275628437B7A00E084AD /* Foundation.framework */; };
+		7FBAD4242846A2F300E139FF /* Pictem_iOS_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBAD4232846A2F300E139FF /* Pictem_iOS_sampleApp.swift */; };
+		7FBAD4262846A2F300E139FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBAD4252846A2F300E139FF /* ContentView.swift */; };
+		7FBAD4282846A2F400E139FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FBAD4272846A2F400E139FF /* Assets.xcassets */; };
+		7FBAD42B2846A2F400E139FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FBAD42A2846A2F400E139FF /* Preview Assets.xcassets */; };
+		7FBAD42F2846A34800E139FF /* Rondo_Alla_Turka.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 7F03275E2843B7DB00E084AD /* Rondo_Alla_Turka.ogg */; };
+		7FBAD4352846A3A200E139FF /* decoder_vorbis.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F03274A284279BC00E084AD /* decoder_vorbis.hpp */; };
+		7FBAD4362846A3A200E139FF /* system_audio_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F0327502842836C00E084AD /* system_audio_macos.h */; };
+		7FBAD4372846A3A200E139FF /* player.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F032717284264D800E084AD /* player.hpp */; };
+		7FBAD4392846A3A200E139FF /* decoder_vorbis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032749284279BC00E084AD /* decoder_vorbis.cpp */; };
+		7FBAD43A2846A3A200E139FF /* pictel_sound_library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F0326FF2842619500E084AD /* pictel_sound_library.cpp */; };
+		7FBAD43B2846A3A200E139FF /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F032716284264D800E084AD /* player.cpp */; };
+		7FBAD43C2846A3A200E139FF /* system_audio_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F03274F2842836C00E084AD /* system_audio_macos.mm */; };
+		7FBAD43E2846A3A200E139FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275628437B7A00E084AD /* Foundation.framework */; };
+		7FBAD43F2846A3A200E139FF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03275728437B7A00E084AD /* CoreFoundation.framework */; };
+		7FBAD4402846A3A200E139FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032753284284FB00E084AD /* AudioToolbox.framework */; };
+		7FBAD44F2846A55A00E139FF /* PictelSoundPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FBAD44E2846A55A00E139FF /* PictelSoundPlayer.mm */; };
+		7FBAD4552846A91B00E139FF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBAD4542846A91B00E139FF /* CoreAudio.framework */; };
+		7FBAD4572846A92700E139FF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBAD4562846A92700E139FF /* libc++.tbd */; };
+		7FBAD4BE2846BDCD00E139FF /* libPictel-sound-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */; };
+		7FBAD4FC2848E0DB00E139FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F032753284284FB00E084AD /* AudioToolbox.framework */; };
+		7FBAD5012848E53200E139FF /* pictel_sound.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F0326FE2842619500E084AD /* pictel_sound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FBAD5022848E53500E139FF /* pictel_sound.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F03275C2843B54600E084AD /* pictel_sound.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FBAD5032848E61400E139FF /* pictel_sound.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F0326FE2842619500E084AD /* pictel_sound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FBAD5042848E61600E139FF /* pictel_sound.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7F03275C2843B54600E084AD /* pictel_sound.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FBAD50A2848EA9F00E139FF /* libPictel-sound-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBAD4482846A3A200E139FF /* libPictel-sound-iOS.a */; };
+		7FBAD50E2848EBC100E139FF /* Vorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBAD50D2848EBC100E139FF /* Vorbis.xcframework */; };
+		7FBAD50F2848EBC100E139FF /* Vorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBAD50D2848EBC100E139FF /* Vorbis.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7F0327122842622100E084AD /* PBXContainerItemProxy */ = {
+		7FBAD4C12846C44B00E139FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F0326E52842616E00E084AD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7F0326EC2842616E00E084AD;
-			remoteInfo = "Pictel-sound";
+			remoteInfo = "Pictel-sound-macos";
+		};
+		7FBAD50B2848EAA500E139FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F0326E52842616E00E084AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FBAD4332846A3A200E139FF;
+			remoteInfo = "Pictel-sound-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -58,12 +101,6 @@
 		7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Pictel-cmd-sample-app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F032716284264D800E084AD /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		7F032717284264D800E084AD /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
-		7F03273C284275F000E084AD /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		7F03273E284275F000E084AD /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbisfile.a; sourceTree = "<group>"; };
-		7F03273F284275F000E084AD /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libogg.a; sourceTree = "<group>"; };
-		7F032740284275F000E084AD /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbisenc.a; sourceTree = "<group>"; };
-		7F032741284275F000E084AD /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvorbis.a; sourceTree = "<group>"; };
-		7F032743284275F000E084AD /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		7F0327482842794900E084AD /* interfaces.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interfaces.h; sourceTree = "<group>"; };
 		7F032749284279BC00E084AD /* decoder_vorbis.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = decoder_vorbis.cpp; sourceTree = "<group>"; };
 		7F03274A284279BC00E084AD /* decoder_vorbis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = decoder_vorbis.hpp; sourceTree = "<group>"; };
@@ -74,6 +111,18 @@
 		7F03275728437B7A00E084AD /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		7F03275C2843B54600E084AD /* pictel_sound.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pictel_sound.hpp; sourceTree = "<group>"; };
 		7F03275E2843B7DB00E084AD /* Rondo_Alla_Turka.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rondo_Alla_Turka.ogg; sourceTree = "<group>"; };
+		7FBAD4212846A2F300E139FF /* Pictel-iOS-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pictel-iOS-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FBAD4232846A2F300E139FF /* Pictem_iOS_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictem_iOS_sampleApp.swift; sourceTree = "<group>"; };
+		7FBAD4252846A2F300E139FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7FBAD4272846A2F400E139FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7FBAD42A2846A2F400E139FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7FBAD4482846A3A200E139FF /* libPictel-sound-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPictel-sound-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FBAD44C2846A55A00E139FF /* Pictem-iOS-sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pictem-iOS-sample-Bridging-Header.h"; sourceTree = "<group>"; };
+		7FBAD44D2846A55A00E139FF /* PictelSoundPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictelSoundPlayer.h; sourceTree = "<group>"; };
+		7FBAD44E2846A55A00E139FF /* PictelSoundPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PictelSoundPlayer.mm; sourceTree = "<group>"; };
+		7FBAD4542846A91B00E139FF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		7FBAD4562846A92700E139FF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7FBAD50D2848EBC100E139FF /* Vorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Vorbis.xcframework; path = "../../external/ogg-vorbis/lib/macos-universal/Vorbis.xcframework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +132,8 @@
 			files = (
 				7F03275828437B7A00E084AD /* Foundation.framework in Frameworks */,
 				7F03275928437B7A00E084AD /* CoreFoundation.framework in Frameworks */,
+				7FBAD50E2848EBC100E139FF /* Vorbis.xcframework in Frameworks */,
 				7F032754284284FB00E084AD /* AudioToolbox.framework in Frameworks */,
-				7F0327442842760300E084AD /* libvorbisfile.a in Frameworks */,
-				7F0327452842760500E084AD /* libogg.a in Frameworks */,
-				7F0327462842760600E084AD /* libvorbisenc.a in Frameworks */,
-				7F0327472842760800E084AD /* libvorbis.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,10 +141,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FBAD4BE2846BDCD00E139FF /* libPictel-sound-macos.a in Frameworks */,
 				7F03275A28437BA000E084AD /* CoreFoundation.framework in Frameworks */,
 				7F03275B28437BA000E084AD /* Foundation.framework in Frameworks */,
 				7F03275528437A5600E084AD /* AudioToolbox.framework in Frameworks */,
-				7F03271B284274A900E084AD /* libPictel-sound-macos.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBAD41E2846A2F300E139FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBAD50A2848EA9F00E139FF /* libPictel-sound-iOS.a in Frameworks */,
+				7FBAD4FC2848E0DB00E139FF /* AudioToolbox.framework in Frameworks */,
+				7FBAD4572846A92700E139FF /* libc++.tbd in Frameworks */,
+				7FBAD4552846A91B00E139FF /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBAD43D2846A3A200E139FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBAD43E2846A3A200E139FF /* Foundation.framework in Frameworks */,
+				7FBAD43F2846A3A200E139FF /* CoreFoundation.framework in Frameworks */,
+				7FBAD50F2848EBC100E139FF /* Vorbis.xcframework in Frameworks */,
+				7FBAD4402846A3A200E139FF /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +189,8 @@
 			children = (
 				7F0326ED2842616E00E084AD /* libPictel-sound-macos.a */,
 				7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */,
+				7FBAD4212846A2F300E139FF /* Pictel-iOS-sample.app */,
+				7FBAD4482846A3A200E139FF /* libPictel-sound-iOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +232,7 @@
 		7F0327012842619500E084AD /* pictel-sound-sample */ = {
 			isa = PBXGroup;
 			children = (
+				7FBAD4222846A2F300E139FF /* iOS */,
 				7F0327022842619500E084AD /* macos */,
 			);
 			path = "pictel-sound-sample";
@@ -178,6 +249,8 @@
 		7F0327142842622500E084AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FBAD4562846A92700E139FF /* libc++.tbd */,
+				7FBAD4542846A91B00E139FF /* CoreAudio.framework */,
 				7F03275728437B7A00E084AD /* CoreFoundation.framework */,
 				7F03275628437B7A00E084AD /* Foundation.framework */,
 				7F032753284284FB00E084AD /* AudioToolbox.framework */,
@@ -188,47 +261,9 @@
 		7F032739284275DE00E084AD /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				7F03273A284275F000E084AD /* lib */,
+				7FBAD50D2848EBC100E139FF /* Vorbis.xcframework */,
 			);
 			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		7F03273A284275F000E084AD /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				7F03273B284275F000E084AD /* win64 */,
-				7F03273D284275F000E084AD /* macos-universal */,
-				7F032742284275F000E084AD /* linux */,
-			);
-			name = lib;
-			path = "../../external/ogg-vorbis/lib";
-			sourceTree = "<group>";
-		};
-		7F03273B284275F000E084AD /* win64 */ = {
-			isa = PBXGroup;
-			children = (
-				7F03273C284275F000E084AD /* README */,
-			);
-			path = win64;
-			sourceTree = "<group>";
-		};
-		7F03273D284275F000E084AD /* macos-universal */ = {
-			isa = PBXGroup;
-			children = (
-				7F03273E284275F000E084AD /* libvorbisfile.a */,
-				7F03273F284275F000E084AD /* libogg.a */,
-				7F032740284275F000E084AD /* libvorbisenc.a */,
-				7F032741284275F000E084AD /* libvorbis.a */,
-			);
-			path = "macos-universal";
-			sourceTree = "<group>";
-		};
-		7F032742284275F000E084AD /* linux */ = {
-			isa = PBXGroup;
-			children = (
-				7F032743284275F000E084AD /* README */,
-			);
-			path = linux;
 			sourceTree = "<group>";
 		};
 		7F03274D2842836200E084AD /* platform */ = {
@@ -257,6 +292,28 @@
 			path = ../../resources;
 			sourceTree = "<group>";
 		};
+		7FBAD4222846A2F300E139FF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7FBAD4232846A2F300E139FF /* Pictem_iOS_sampleApp.swift */,
+				7FBAD4252846A2F300E139FF /* ContentView.swift */,
+				7FBAD4272846A2F400E139FF /* Assets.xcassets */,
+				7FBAD4292846A2F400E139FF /* Preview Content */,
+				7FBAD44D2846A55A00E139FF /* PictelSoundPlayer.h */,
+				7FBAD44E2846A55A00E139FF /* PictelSoundPlayer.mm */,
+				7FBAD44C2846A55A00E139FF /* Pictem-iOS-sample-Bridging-Header.h */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		7FBAD4292846A2F400E139FF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7FBAD42A2846A2F400E139FF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -264,9 +321,23 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FBAD5022848E53500E139FF /* pictel_sound.hpp in Headers */,
+				7FBAD5012848E53200E139FF /* pictel_sound.h in Headers */,
 				7F03274C284279BC00E084AD /* decoder_vorbis.hpp in Headers */,
 				7F0327522842836C00E084AD /* system_audio_macos.h in Headers */,
 				7F032719284264D800E084AD /* player.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBAD4342846A3A200E139FF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBAD5042848E61600E139FF /* pictel_sound.hpp in Headers */,
+				7FBAD5032848E61400E139FF /* pictel_sound.h in Headers */,
+				7FBAD4352846A3A200E139FF /* decoder_vorbis.hpp in Headers */,
+				7FBAD4362846A3A200E139FF /* system_audio_macos.h in Headers */,
+				7FBAD4372846A3A200E139FF /* player.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,12 +372,47 @@
 			buildRules = (
 			);
 			dependencies = (
-				7F0327132842622100E084AD /* PBXTargetDependency */,
+				7FBAD4C22846C44B00E139FF /* PBXTargetDependency */,
 			);
 			name = "Pictel-cmd-sample-app";
 			productName = "Pictel-cmd-sample-app";
 			productReference = 7F03270A2842620C00E084AD /* Pictel-cmd-sample-app */;
 			productType = "com.apple.product-type.tool";
+		};
+		7FBAD4202846A2F300E139FF /* Pictel-iOS-sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FBAD42E2846A2F400E139FF /* Build configuration list for PBXNativeTarget "Pictel-iOS-sample" */;
+			buildPhases = (
+				7FBAD41D2846A2F300E139FF /* Sources */,
+				7FBAD41E2846A2F300E139FF /* Frameworks */,
+				7FBAD41F2846A2F300E139FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FBAD50C2848EAA500E139FF /* PBXTargetDependency */,
+			);
+			name = "Pictel-iOS-sample";
+			productName = "Pictem-iOS-sample";
+			productReference = 7FBAD4212846A2F300E139FF /* Pictel-iOS-sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7FBAD4332846A3A200E139FF /* Pictel-sound-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FBAD4452846A3A200E139FF /* Build configuration list for PBXNativeTarget "Pictel-sound-iOS" */;
+			buildPhases = (
+				7FBAD4342846A3A200E139FF /* Headers */,
+				7FBAD4382846A3A200E139FF /* Sources */,
+				7FBAD43D2846A3A200E139FF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pictel-sound-iOS";
+			productName = "Pictel-sound";
+			productReference = 7FBAD4482846A3A200E139FF /* libPictel-sound-iOS.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -315,12 +421,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					7F0326EC2842616E00E084AD = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
 					7F0327092842620C00E084AD = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					7FBAD4202846A2F300E139FF = {
+						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
+					};
+					7FBAD4FD2848E3C000E139FF = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
@@ -339,10 +453,46 @@
 			projectRoot = "";
 			targets = (
 				7F0326EC2842616E00E084AD /* Pictel-sound-macos */,
+				7FBAD4332846A3A200E139FF /* Pictel-sound-iOS */,
 				7F0327092842620C00E084AD /* Pictel-cmd-sample-app */,
+				7FBAD4202846A2F300E139FF /* Pictel-iOS-sample */,
+				7FBAD4FD2848E3C000E139FF /* Framework */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7FBAD41F2846A2F300E139FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBAD42B2846A2F400E139FF /* Preview Assets.xcassets in Resources */,
+				7FBAD42F2846A34800E139FF /* Rondo_Alla_Turka.ogg in Resources */,
+				7FBAD4282846A2F400E139FF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7FBAD5052848E81500E139FF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pushd ${SRCROOT}\n\nxcodebuild -target Pictel-sound-macos BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild -target Pictel-sound-iOS BUILD_LIBRARY_FOR_DISTRIBUTION=YES -sdk iphoneos\n\nxcodebuild -target Pictel-sound-iOS BUILD_LIBRARY_FOR_DISTRIBUTION=YES -sdk iphonesimulator                                 \n\nxcodebuild -create-xcframework \\\n    -library build/Release/libPictel-sound-macos.a  \\\n    -headers build/Release/pictel-sound \\\n    -library build/Release-iphoneos/libPictel-sound-iOS.a \\\n    -headers build/Release-iphoneos/pictel-sound \\\n    -library build/Release-iphonesimulator/libPictel-sound-iOS.a \\\n    -headers build/Release-iphonesimulator/pictel-sound \\\n    -output build/PictelSound.xcframework\n    \npopd\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7F0326EA2842616E00E084AD /* Sources */ = {
@@ -364,13 +514,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7FBAD41D2846A2F300E139FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBAD44F2846A55A00E139FF /* PictelSoundPlayer.mm in Sources */,
+				7FBAD4262846A2F300E139FF /* ContentView.swift in Sources */,
+				7FBAD4242846A2F300E139FF /* Pictem_iOS_sampleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBAD4382846A3A200E139FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBAD4392846A3A200E139FF /* decoder_vorbis.cpp in Sources */,
+				7FBAD43A2846A3A200E139FF /* pictel_sound_library.cpp in Sources */,
+				7FBAD43B2846A3A200E139FF /* player.cpp in Sources */,
+				7FBAD43C2846A3A200E139FF /* system_audio_macos.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7F0327132842622100E084AD /* PBXTargetDependency */ = {
+		7FBAD4C22846C44B00E139FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7F0326EC2842616E00E084AD /* Pictel-sound-macos */;
-			targetProxy = 7F0327122842622100E084AD /* PBXContainerItemProxy */;
+			targetProxy = 7FBAD4C12846C44B00E139FF /* PBXContainerItemProxy */;
+		};
+		7FBAD50C2848EAA500E139FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FBAD4332846A3A200E139FF /* Pictel-sound-iOS */;
+			targetProxy = 7FBAD50B2848EAA500E139FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -428,8 +604,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -481,6 +658,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
@@ -493,12 +672,14 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				INSTALL_PATH = "pictel-sound";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../external/ogg-vorbis/lib/macos-universal",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "pictel-sound/include";
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -511,12 +692,14 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				INSTALL_PATH = "pictel-sound";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../external/ogg-vorbis/lib/macos-universal",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "pictel-sound/include";
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};
@@ -538,6 +721,151 @@
 				DEVELOPMENT_TEAM = 75FQAVWUP3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7FBAD42C2846A2F400E139FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				ENABLE_BITCODE = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../src/pictel-sound-lib/include";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.krzysp.pictel.sound.iOSSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "../../src/pictel-sound-sample/iOS/Pictem-iOS-sample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		7FBAD42D2846A2F400E139FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				ENABLE_BITCODE = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../src/pictel-sound-lib/include";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.krzysp.pictel.sound.iOSSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "../../src/pictel-sound-sample/iOS/Pictem-iOS-sample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		7FBAD4462846A3A200E139FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				INSTALL_PATH = "pictel-sound";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../external/ogg-vorbis/lib/macos-universal",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "pictel-sound/include";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SUPPORTS_MACCATALYST = YES;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		7FBAD4472846A3A200E139FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../external/ogg-vorbis/include";
+				INSTALL_PATH = "pictel-sound";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../external/ogg-vorbis/lib/macos-universal",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "pictel-sound/include";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SUPPORTS_MACCATALYST = YES;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		7FBAD4FF2848E3C000E139FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7FBAD5002848E3C000E139FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75FQAVWUP3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -568,6 +896,33 @@
 			buildConfigurations = (
 				7F03270F2842620C00E084AD /* Debug */,
 				7F0327102842620C00E084AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FBAD42E2846A2F400E139FF /* Build configuration list for PBXNativeTarget "Pictel-iOS-sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FBAD42C2846A2F400E139FF /* Debug */,
+				7FBAD42D2846A2F400E139FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FBAD4452846A3A200E139FF /* Build configuration list for PBXNativeTarget "Pictel-sound-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FBAD4462846A3A200E139FF /* Debug */,
+				7FBAD4472846A3A200E139FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FBAD4FE2848E3C000E139FF /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FBAD4FF2848E3C000E139FF /* Debug */,
+				7FBAD5002848E3C000E139FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
