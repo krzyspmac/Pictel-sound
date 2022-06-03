@@ -22,7 +22,12 @@
 #include "include/pictel_sound.h"
 #include "player.hpp"
 #include "decoder_vorbis.hpp"
+
+#ifdef _WIN32
+#include "platform/windows/system_audio_windows.h"
+#else
 #include "system_audio_macos.h"
+#endif
 
 using namespace PictelSound;
 

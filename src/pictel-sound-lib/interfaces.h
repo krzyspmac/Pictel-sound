@@ -26,8 +26,8 @@
 #define pictel_sound_decoder_interface_h
 
 #include <iostream>
-#include "pictel_sound.h"
-#include "pictel_sound.hpp"
+#include "include/pictel_sound.h"
+#include "include/pictel_sound.hpp"
 
 namespace PictelSound
 {
@@ -52,7 +52,7 @@ namespace PictelSound
     {
         DecoderI *m_decoder;
     public:
-        SystemAudioI() { };
+        SystemAudioI() : m_decoder(NULL) { };
         virtual ~SystemAudioI() { };
 
         virtual void SetDecoder(DecoderI*) = 0;
