@@ -31,7 +31,6 @@ using namespace PictelSound;
 DecoderVorbis::DecoderVorbis(std::string path)
 :   DecoderI(path)
 ,   m_file(NULL)
-,   m_path(path)
 ,   m_OggVorbisInfo(NULL)
 {
 }

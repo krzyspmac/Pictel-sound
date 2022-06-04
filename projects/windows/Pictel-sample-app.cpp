@@ -7,6 +7,11 @@
 int main()
 {
     auto ref = PictelSoundCreate("C:\\Users\\Krzysiek\\Documents\\GitHub\\Pictel-sound\\resources\\Rondo_Alla_Turka.ogg");
+    if (ref != nullptr)
+    {
+        PictelSoundOpen(ref);
+        PictelSoundPlay(ref);
+    }
     std::cout << "Hello World!\n";
 }
 

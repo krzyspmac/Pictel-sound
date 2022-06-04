@@ -33,12 +33,18 @@ namespace PictelSound
 {
     class DecoderI
     {
+    protected:
+        std::string m_path;
     public:
-        DecoderI(std::string path) { };
+        DecoderI(std::string path): m_path(path) { };
         virtual ~DecoderI() { };
 
         virtual bool Open() = 0;
         virtual void Close() = 0;
+
+        auto& GetPath() {
+            return m_path;
+        }
 
         virtual double GetRate() = 0;
         virtual uint32_t GetChannels() = 0;

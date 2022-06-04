@@ -78,7 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\..\src\pictel-sound-lib\include\;$(ProjectDir)..\..\external\ogg-vorbis\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\src\pictel-sound-lib\platform\shared\miniaudio\;$(ProjectDir)..\..\src\pictel-sound-lib\include\;$(ProjectDir)..\..\external\ogg-vorbis\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\external\ogg-vorbis\lib\win64;$(LibraryPath)</LibraryPath>
     <PublicModuleDirectories>$(PublicModuleDirectories)</PublicModuleDirectories>
     <OutDir>$(SolutionDir)\build\Pictel-Sound\$(Platform)\$(Configuration)\</OutDir>
@@ -177,6 +177,8 @@
     <ClInclude Include="..\..\src\pictel-sound-lib\include\pictel_sound.h" />
     <ClInclude Include="..\..\src\pictel-sound-lib\include\pictel_sound.hpp" />
     <ClInclude Include="..\..\src\pictel-sound-lib\interfaces.h" />
+    <ClInclude Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_manager.h" />
+    <ClInclude Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_windows.h" />
     <ClInclude Include="..\..\src\pictel-sound-lib\player.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -184,6 +186,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\pictel-sound-lib\decoder_vorbis.cpp" />
     <ClCompile Include="..\..\src\pictel-sound-lib\pictel_sound_library.cpp" />
+    <ClCompile Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_manager.cpp" />
     <ClCompile Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_windows.cpp" />
     <ClCompile Include="..\..\src\pictel-sound-lib\player.cpp" />
     <ClCompile Include="Pictel-sound.cpp" />

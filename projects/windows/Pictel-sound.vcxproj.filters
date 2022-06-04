@@ -36,6 +36,12 @@
     <ClInclude Include="..\..\src\pictel-sound-lib\player.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Pictel-sound.cpp">
@@ -51,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
