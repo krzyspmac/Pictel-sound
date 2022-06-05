@@ -74,4 +74,7 @@ void PictelSoundSetLoops(PictelSoundRef, bool);
 /** Get the player state */
 PlayerState PictelSoundGetPlayerState(PictelSoundRef);
 
+/** Query is playing */
+bool PictelSoundIsPlaying(PictelSoundRef);
+
 #endif //PICTEL_SOUND_H

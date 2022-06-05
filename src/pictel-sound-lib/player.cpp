@@ -79,6 +79,16 @@ void Player::Close()
     }
 }
 
+bool Player::QueryIsPlaging()
+{
+    if (m_systemAudio != nullptr)
+    {   return m_systemAudio->QueryIsRunning();
+    }
+    else
+    {   return false;
+    }
+}
+
 void Player::SetVolume(double value)
 {
     m_systemAudio->SetVolume(value);

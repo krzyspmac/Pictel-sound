@@ -88,6 +88,11 @@ PlayerState PictelSoundGetPlayerState(PictelSoundRef ref)
     return REF2OBJ(ref)->GetState();
 }
 
+bool PictelSoundIsPlaying(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->QueryIsPlaging();
+}
+
 PlayerI *PlayerI::CreateFromFile(std::string path)
 {
     DecoderI *decoder = new DecoderVorbis(path);

@@ -33,6 +33,16 @@
 
 using namespace PictelSound;
 
+typedef struct {
+    ma_decoder_config m_decoderConfig;
+    ma_decoder m_ma_decoder;
+    ma_device_config m_deviceConfig;
+    ma_device m_device;
+    ma_format m_format;
+    ma_uint32 m_channels;
+    ma_uint32 m_sampleRate;
+    ma_uint32 cursor;
+} MiniAudioConfig;
 
 static ma_result ma_decoding_backend_init__libvorbis(void* pUserData, ma_read_proc onRead, ma_seek_proc onSeek, ma_tell_proc onTell, void* pReadSeekTellUserData, const ma_decoding_backend_config* pConfig, const ma_allocation_callbacks* pAllocationCallbacks, ma_data_source** ppBackend)
 {
@@ -111,7 +121,8 @@ static ma_decoding_backend_vtable g_ma_decoding_backend_vtable_libvorbis =
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
-    ma_data_source* pDataSource = (ma_data_source*)pDevice->pUserData;
+    MiniAudioConfig* config = (MiniAudioConfig*)pDevice->pUserData;
+    ma_data_source* pDataSource = (ma_data_source*)&config->m_ma_decoder;//(ma_data_source*)pDevice->pUserData;
     if (pDataSource == NULL) {
         return;
     }
@@ -121,12 +132,11 @@ void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uin
     (void)pInput;
 }
 
-
-
 SystemAudio::SystemAudio()
 :   SystemAudioI()
 ,   m_playerState(PLAYER_STOPPED)
 ,   m_loops(false)
+,   m_mediaPlayerConfig(nullptr)
 {
 }
 
@@ -144,13 +154,14 @@ void SystemAudio::SetState(PlayerState state)
 void SystemAudio::SetDecoder(DecoderI *decoder)
 {
     ma_result result;
-    ma_decoder_config decoderConfig;
-    ma_decoder ma_decoder;
-    ma_device_config deviceConfig;
-    ma_device device;
-    ma_format format;
-    ma_uint32 channels;
-    ma_uint32 sampleRate;
+
+    MiniAudioConfig* config = (MiniAudioConfig*)malloc(sizeof(MiniAudioConfig));
+    if (config == nullptr)
+    {   return;
+    }
+
+    config->cursor = 0;
+    m_mediaPlayerConfig = config;
 
     /*
     Add your custom backend vtables here. The order in the array defines the order of priority. The
@@ -162,83 +173,137 @@ void SystemAudio::SetDecoder(DecoderI *decoder)
     };
 
     /* Initialize the decoder. */
-    decoderConfig = ma_decoder_config_init_default();
-    decoderConfig.pCustomBackendUserData = NULL;  /* In this example our backend objects are contained within a ma_decoder_ex object to avoid a malloc. Our vtables need to know about this. */
-    decoderConfig.ppCustomBackendVTables = pCustomBackendVTables;
-    decoderConfig.customBackendCount = sizeof(pCustomBackendVTables) / sizeof(pCustomBackendVTables[0]);
+    config->m_decoderConfig = ma_decoder_config_init_default();
+    config->m_decoderConfig.pCustomBackendUserData = NULL;  /* In this example our backend objects are contained within a ma_decoder_ex object to avoid a malloc. Our vtables need to know about this. */
+    config->m_decoderConfig.ppCustomBackendVTables = pCustomBackendVTables;
+    config->m_decoderConfig.customBackendCount = sizeof(pCustomBackendVTables) / sizeof(pCustomBackendVTables[0]);
 
-    result = ma_decoder_init_file(decoder->GetPath().c_str(), &decoderConfig, &ma_decoder);
+    result = ma_decoder_init_file(decoder->GetPath().c_str(), &config->m_decoderConfig, &config->m_ma_decoder);
     if (result != MA_SUCCESS) {
         printf("Failed to initialize decoder.");
         return;
     }
 
-    ma_data_source_set_looping(&ma_decoder, 1);
-
+    ma_data_source_set_looping(&config->m_ma_decoder, 1);
 
     /* Initialize the device. */
-    result = ma_data_source_get_data_format(&ma_decoder, &format, &channels, &sampleRate, NULL, 0);
+    result = ma_data_source_get_data_format(&config->m_ma_decoder, &config->m_format, &config->m_channels, &config->m_sampleRate, NULL, 0);
     if (result != MA_SUCCESS) {
         printf("Failed to retrieve decoder data format.");
-        ma_decoder_uninit(&ma_decoder);
+        ma_decoder_uninit(&config->m_ma_decoder);
         return;
     }
 
-    deviceConfig = ma_device_config_init(ma_device_type_playback);
-    deviceConfig.playback.format = format;
-    deviceConfig.playback.channels = channels;
-    deviceConfig.sampleRate = sampleRate;
-    deviceConfig.dataCallback = data_callback;
-    deviceConfig.pUserData = &ma_decoder;
+    config->m_deviceConfig = ma_device_config_init(ma_device_type_playback);
 
-    if (ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS) {
-        printf("Failed to open playback device.\n");
-        ma_decoder_uninit(&ma_decoder);
-        return;
-    }
-
-    if (ma_device_start(&device) != MA_SUCCESS) {
-        printf("Failed to start playback device.\n");
-        ma_device_uninit(&device);
-        ma_decoder_uninit(&ma_decoder);
-        return;
-    }
-
-    printf("Press Enter to quit...");
-    getchar();
-
-    ma_device_uninit(&device);
-    ma_decoder_uninit(&ma_decoder);
-
+    config->m_deviceConfig.playback.format = config->m_format;
+    config->m_deviceConfig.playback.channels = config->m_channels;
+    config->m_deviceConfig.sampleRate = config->m_sampleRate;
+    config->m_deviceConfig.dataCallback = data_callback;
+    config->m_deviceConfig.pUserData = m_mediaPlayerConfig;
 }
 
 void SystemAudio::PrepareToPlay()
 {
+    if (m_mediaPlayerConfig == nullptr)
+    {   return;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+
+    if (ma_device_init(NULL, &config->m_deviceConfig, &config->m_device) != MA_SUCCESS) {
+        printf("Failed to open playback device.\n");
+        ma_decoder_uninit(&config->m_ma_decoder);
+        return;
+    }
+
+    SetState(PLAYER_PREPARED);
 }
 
 void SystemAudio::ReadBufferInto(void *ptr)
 {
+    // Not used in mini audio
 }
 
 void SystemAudio::Play()
 {
+    if (m_mediaPlayerConfig == nullptr)
+    {   return;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+
+    if (ma_device_start(&config->m_device) != MA_SUCCESS)
+    {   printf("Failed to start playback device.\n");
+        Free();
+        return;
+    }
+
+    SetState(PLAYER_PLAYING);
 }
 
 void SystemAudio::Pause()
 {
+    if (m_mediaPlayerConfig == nullptr)
+    {   return;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+    if (ma_device_stop(&config->m_device) != MA_SUCCESS)
+    {   printf("Failed to start playback device.\n");
+        Free();
+        return;
+    }
+
+    SetState(PLAYER_PAUSED);
 }
 
 void SystemAudio::Stop()
 {
+    if (m_mediaPlayerConfig == nullptr)
+    {   return;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+    if (ma_device_stop(&config->m_device) != MA_SUCCESS)
+    {   printf("Failed to start playback device.\n");
+        Free();
+        return;
+    }
+
+    if (ma_data_source_seek_to_pcm_frame((ma_data_source*)&config->m_ma_decoder, 0) != MA_SUCCESS)
+    {   printf("Could not seek to start!.\n");
+        return;
+    }
+    
+    SetState(PLAYER_STOPPED);
 }
 
 void SystemAudio::Free()
 {
+    if (m_mediaPlayerConfig == nullptr)
+    {   return;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+
+    ma_device_uninit(&config->m_device);
+    ma_decoder_uninit(&config->m_ma_decoder);
+
+    free(m_mediaPlayerConfig);
+    m_mediaPlayerConfig = nullptr;
+
+    SetState(PLAYER_DISCARDED);
 }
 
 bool SystemAudio::QueryIsRunning()
 {
-    return false;
+    if (m_mediaPlayerConfig == nullptr)
+    {   return false;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+    return ma_device_is_started(&config->m_device);
 }
 
 double SystemAudio::GetDuration()

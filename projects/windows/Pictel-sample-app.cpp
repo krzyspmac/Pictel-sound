@@ -3,25 +3,38 @@
 
 #include <iostream>
 #include <pictel_sound.h>
+#include <stdio.h>
 
 int main()
 {
-    auto ref = PictelSoundCreate("C:\\Users\\Krzysiek\\Documents\\GitHub\\Pictel-sound\\resources\\Rondo_Alla_Turka.ogg");
-    if (ref != nullptr)
+    auto ref1 = PictelSoundCreate("C:\\Users\\Krzysiek\\Documents\\GitHub\\Pictel-sound\\resources\\Rondo_Alla_Turka.ogg");
+    if (ref1 != nullptr)
     {
-        PictelSoundOpen(ref);
-        PictelSoundPlay(ref);
+        PictelSoundOpen(ref1);
+        PictelSoundPlay(ref1);
     }
-    std::cout << "Hello World!\n";
+    
+    auto ref2 = PictelSoundCreate("C:\\Users\\Krzysiek\\Downloads\\file_example_OOG_2MG.ogg");
+    if (ref2 != nullptr)
+    {
+        PictelSoundOpen(ref2);
+        PictelSoundPlay(ref2);
+    }
+
+    printf("ref1 is playing = %d\n", PictelSoundIsPlaying(ref1));
+
+    printf("Press any key to pause ref2\\n");
+    getchar();
+
+    PictelSoundPause(ref2);
+
+    printf("Press any key to unpause ref2\\n");
+    getchar();
+
+    PictelSoundPlay(ref2);
+
+    printf("Press any key to quit\\n");
+    getchar();
+
+    PictelSoundRelease(ref1);
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

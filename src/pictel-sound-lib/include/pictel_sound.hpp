@@ -42,6 +42,7 @@ namespace PictelSound
         virtual void Stop() = 0;
         virtual void SetVolume(double) = 0;
         virtual PlayerState GetState() = 0;
+        virtual bool QueryIsPlaging() = 0;
         virtual void SetLoops(bool) = 0;
     };
 };

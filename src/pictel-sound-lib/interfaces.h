@@ -79,15 +79,7 @@ namespace PictelSound
     public:
         __PlayerI(DecoderI*, SystemAudioI*) { };
 
-        virtual bool Open() = 0;
-        virtual void Play() = 0;
-        virtual void Pause() = 0;
-        virtual void Stop() = 0;
         virtual void Close() = 0;
-        virtual void SetVolume(double) = 0;
-        virtual void SetLoops(bool) = 0;
-
-        virtual PlayerState GetState() = 0;
     };
 };
 

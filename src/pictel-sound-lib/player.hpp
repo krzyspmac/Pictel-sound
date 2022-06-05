@@ -48,6 +48,7 @@ namespace PictelSound
         void SetVolume(double);
         void Seek(double);
         void SetLoops(bool);
+        bool QueryIsPlaging();
         PlayerState GetState();
     };
 };
