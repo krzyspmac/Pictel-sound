@@ -14,33 +14,45 @@ The library is written to support my custom, 2d engine
 [https://github.com/krzyspmac/Pictel](https://github.com/krzyspmac/Pictel) but can be
 used in any other project.
 
+I need a library that's:
+
+- simple to use
+- plays an open-source format (ogg/vorbis was chosen for that)
+- has limited amount of functionality
+- works well with different environments/systems
+
 OGG/VORBIS
 ----------
 
 The library includes a statically compiled OGG and VORBIS libraries for all
 supported platforms. 
 
-Build scripts are provided for Xcode (MacOS/iOS Device/iOS Simulator).
-Windows, Linux & Android support coming at a later time.
+Build scripts are provided for Xcode (MacOS/iOS Device/iOS Simulator) and Windows (VS C++).
+Linux & Android support coming at a later time.
 
-See [https://xiph.org/vorbis/](https://xiph.org/vorbis/) for more information.
+Dependencies
+------------
+
+- [libogg/libvorbis](https://xiph.org/ogg)
+- [miniaudio](https://github.com/mackron/miniaudio) (windows & linux)
 
 Completion
 ----------
 
 Not all platform specific code has been completed.
 
-[x] MacOS
-[x] iOS
-[ ] Windows
-[ ] Linux
+- [x] MacOS (native code)
+- [x] iOS (native code)
+- [x] Windows (miniaudio)
+- [ ] Linux (miniaudio)
+- [ ] Android (don't know yet)
 
 Usage
 =======
 
 C
 -
-```
+```c
 #include "pictel_sound.h"
 
 PictelSoundRef file = PictelSoundCreate("path_to_file.ogg");
@@ -53,7 +65,7 @@ PictelSoundRelease(file);
 C++
 -
 
-```
+```c_cpp
 #include "pictel_sound.hpp"
 
 auto *player = PlayerI::CreateFromFile("path_to_file.ogg");
