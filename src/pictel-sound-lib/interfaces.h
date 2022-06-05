@@ -68,6 +68,7 @@ namespace PictelSound
         virtual void Stop() = 0;
         virtual void Free() = 0;
         virtual bool QueryIsRunning() = 0;
+        virtual double QueryPosition() = 0;
         virtual double GetDuration() = 0;
         virtual PlayerState GetState() = 0;
         virtual void SetVolume(double) = 0;

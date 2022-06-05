@@ -44,6 +44,7 @@ namespace PictelSound
         virtual PlayerState GetState() = 0;
         virtual bool QueryIsPlaging() = 0;
         virtual double QueryDuration() = 0;
+        virtual double QueryPosition() = 0;
         virtual void SetLoops(bool) = 0;
     };
 };

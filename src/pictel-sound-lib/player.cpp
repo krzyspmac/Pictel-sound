@@ -97,6 +97,14 @@ double Player::QueryDuration()
     return m_systemAudio->GetDuration();
 }
 
+double Player::QueryPosition()
+{
+    if (m_systemAudio == nullptr)
+    {   return -1;
+    }
+    return m_systemAudio->QueryPosition();
+}
+
 void Player::SetVolume(double value)
 {
     m_systemAudio->SetVolume(value);

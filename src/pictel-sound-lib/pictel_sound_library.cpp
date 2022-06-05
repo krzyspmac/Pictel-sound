@@ -98,6 +98,11 @@ double PictelSoundQueryDuration(PictelSoundRef ref)
     return REF2OBJ(ref)->QueryDuration();
 }
 
+double PictelSoundQueryPosition(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->QueryPosition();
+}
+
 PlayerI *PlayerI::CreateFromFile(std::string path)
 {
     DecoderI *decoder = new DecoderVorbis(path);

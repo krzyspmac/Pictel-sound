@@ -80,4 +80,7 @@ bool PictelSoundIsPlaying(PictelSoundRef);
 /** Query duration */
 double PictelSoundQueryDuration(PictelSoundRef);
 
+/** Query position */
+double PictelSoundQueryPosition(PictelSoundRef);
+
 #endif //PICTEL_SOUND_H

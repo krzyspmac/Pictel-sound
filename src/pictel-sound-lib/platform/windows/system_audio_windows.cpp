@@ -137,6 +137,7 @@ SystemAudio::SystemAudio()
 ,   m_playerState(PLAYER_STOPPED)
 ,   m_loops(false)
 ,   m_mediaPlayerConfig(nullptr)
+,   m_decoder(nullptr)
 {
 }
 
@@ -154,6 +155,8 @@ void SystemAudio::SetState(PlayerState state)
 void SystemAudio::SetDecoder(DecoderI *decoder)
 {
     ma_result result;
+
+    m_decoder = decoder;
 
     MiniAudioConfig* config = (MiniAudioConfig*)malloc(sizeof(MiniAudioConfig));
     if (config == nullptr)
@@ -308,19 +311,27 @@ bool SystemAudio::QueryIsRunning()
 
 double SystemAudio::GetDuration()
 {
+    if (m_decoder == nullptr)
+    {   return -1;
+    }
+
+    return m_decoder->GetDuration();
+}
+
+double SystemAudio::QueryPosition()
+{
     MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
     if (config == nullptr)
     {   return false;
     }
 
-    float duration = 0.0;
-
-    if (ma_data_source_get_length_in_seconds((ma_data_source*)&config->m_ma_decoder, &duration) != MA_SUCCESS)
-    {   printf("Could not get the length!\n");
+    float cursor = 0;
+    if (ma_data_source_get_cursor_in_seconds((ma_data_source*)&config->m_ma_decoder, &cursor) != MA_SUCCESS)
+    {   printf("Could not get the position!\n");
         return -1;
     }
-    
-    return duration;
+
+    return cursor;
 }
 
 PlayerState SystemAudio::GetState()

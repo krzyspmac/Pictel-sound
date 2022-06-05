@@ -50,6 +50,7 @@ namespace PictelSound
         void SetLoops(bool);
         bool QueryIsPlaging();
         double QueryDuration();
+        double QueryPosition();
         PlayerState GetState();
     };
 };

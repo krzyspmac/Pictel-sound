@@ -17,7 +17,7 @@ namespace PictelSound
         PlayerState m_playerState;
         bool m_loops;
         void* m_mediaPlayerConfig;
-
+        DecoderI* m_decoder;
     public: /** SystemAudioI */
         SystemAudio();
         ~SystemAudio();
@@ -30,6 +30,7 @@ namespace PictelSound
         PlayerState GetState();
         bool QueryIsRunning();
         double GetDuration();
+        double QueryPosition();
         void SetVolume(double);
         void SetLoops(bool);
     public: /** PlayerObserverI */

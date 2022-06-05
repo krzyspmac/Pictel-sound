@@ -11,6 +11,8 @@ int main()
     if (ref1 != nullptr)
     {
         PictelSoundOpen(ref1);
+        printf("ref1.duration = %f\n", PictelSoundQueryDuration(ref1));
+
         PictelSoundPlay(ref1);
     }
     
@@ -22,6 +24,7 @@ int main()
     }
 
     printf("ref1 is playing = %d\n", PictelSoundIsPlaying(ref1));
+    printf("ref2.duration = %f\n", PictelSoundQueryDuration(ref2));
 
     printf("Press any key to pause ref2\\n");
     getchar();
@@ -30,6 +33,9 @@ int main()
 
     printf("Press any key to unpause ref2 and lower the volume on ref2\\n");
     getchar();
+
+    printf("ref1.position = %f\n", PictelSoundQueryPosition(ref1));
+    printf("ref2.position = %f\n", PictelSoundQueryPosition(ref2));
 
     PictelSoundPlay(ref2);
     PictelSoundSetVolume(ref2, 0.5);
