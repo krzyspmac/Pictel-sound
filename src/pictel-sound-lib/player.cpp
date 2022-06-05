@@ -79,6 +79,32 @@ void Player::Close()
     }
 }
 
+bool Player::QueryIsPlaging()
+{
+    if (m_systemAudio != nullptr)
+    {   return m_systemAudio->QueryIsRunning();
+    }
+    else
+    {   return false;
+    }
+}
+
+double Player::QueryDuration()
+{
+    if (m_systemAudio == nullptr)
+    {   return -1;
+    }
+    return m_systemAudio->GetDuration();
+}
+
+double Player::QueryPosition()
+{
+    if (m_systemAudio == nullptr)
+    {   return -1;
+    }
+    return m_systemAudio->QueryPosition();
+}
+
 void Player::SetVolume(double value)
 {
     m_systemAudio->SetVolume(value);

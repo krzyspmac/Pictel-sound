@@ -262,6 +262,28 @@ bool SystemAudio::QueryIsRunning()
     return oRunning;
 }
 
+double SystemAudio::QueryPosition()
+{
+    AudioQueueRef queue = (AudioQueueRef)m_queue;
+    if (queue == NULL)
+    {   return -1;
+    }
+
+    double timeInterval = 0;
+    AudioQueueTimelineRef timeLine;
+
+    OSStatus status = AudioQueueCreateTimeline(queue, &timeLine);
+    if( status != noErr) {
+        printf("Could not get current time!\n");
+        return -1;
+    }
+
+    AudioTimeStamp timeStamp;
+    AudioQueueGetCurrentTime(queue, timeLine, &timeStamp, NULL);
+    timeInterval = timeStamp.mSampleTime / (Float64)m_decoder->GetRate(); // modified
+    return timeInterval;
+}
+
 double SystemAudio::GetDuration()
 {
     return m_decoder->GetDuration();

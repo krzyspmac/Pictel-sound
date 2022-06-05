@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     PictelSoundOpen(shortFile);
     PictelSoundPlay(shortFile);
     PictelSoundSetLoops(shortFile, true);
+    RunQueueForTimeInterval(2.5);
     RunQueueForTimeInterval(15);
     PictelSoundRelease(shortFile);
 

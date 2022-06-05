@@ -27,16 +27,16 @@
 
 #include <stdio.h>
 #include "interfaces.h"
+//#include "vorbis/vorbisfile.h"
 #include <vorbis/vorbisfile.h>
 
 namespace PictelSound
 {
     class DecoderVorbis: public DecoderI
     {
-        std::string m_path;
-        FILE *m_file;
         OggVorbis_File m_OggVorbisFile;
         vorbis_info *m_OggVorbisInfo;
+        FILE* m_file;
     public:
         DecoderVorbis(std::string path);
         ~DecoderVorbis();

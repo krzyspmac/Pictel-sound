@@ -26,19 +26,25 @@
 #define pictel_sound_decoder_interface_h
 
 #include <iostream>
-#include "pictel_sound.h"
-#include "pictel_sound.hpp"
+#include "include/pictel_sound.h"
+#include "include/pictel_sound.hpp"
 
 namespace PictelSound
 {
     class DecoderI
     {
+    protected:
+        std::string m_path;
     public:
-        DecoderI(std::string path) { };
+        DecoderI(std::string path): m_path(path) { };
         virtual ~DecoderI() { };
 
         virtual bool Open() = 0;
         virtual void Close() = 0;
+
+        auto& GetPath() {
+            return m_path;
+        }
 
         virtual double GetRate() = 0;
         virtual uint32_t GetChannels() = 0;
@@ -52,7 +58,7 @@ namespace PictelSound
     {
         DecoderI *m_decoder;
     public:
-        SystemAudioI() { };
+        SystemAudioI() : m_decoder(NULL) { };
         virtual ~SystemAudioI() { };
 
         virtual void SetDecoder(DecoderI*) = 0;
@@ -62,6 +68,7 @@ namespace PictelSound
         virtual void Stop() = 0;
         virtual void Free() = 0;
         virtual bool QueryIsRunning() = 0;
+        virtual double QueryPosition() = 0;
         virtual double GetDuration() = 0;
         virtual PlayerState GetState() = 0;
         virtual void SetVolume(double) = 0;
@@ -73,15 +80,7 @@ namespace PictelSound
     public:
         __PlayerI(DecoderI*, SystemAudioI*) { };
 
-        virtual bool Open() = 0;
-        virtual void Play() = 0;
-        virtual void Pause() = 0;
-        virtual void Stop() = 0;
         virtual void Close() = 0;
-        virtual void SetVolume(double) = 0;
-        virtual void SetLoops(bool) = 0;
-
-        virtual PlayerState GetState() = 0;
     };
 };
 

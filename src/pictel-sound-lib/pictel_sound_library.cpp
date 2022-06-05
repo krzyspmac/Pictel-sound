@@ -22,7 +22,12 @@
 #include "include/pictel_sound.h"
 #include "player.hpp"
 #include "decoder_vorbis.hpp"
+
+#ifdef _WIN32
+#include "platform/windows/system_audio_windows.h"
+#else
 #include "system_audio_macos.h"
+#endif
 
 using namespace PictelSound;
 
@@ -81,6 +86,21 @@ void PictelSoundSetLoops(PictelSoundRef ref, bool value)
 PlayerState PictelSoundGetPlayerState(PictelSoundRef ref)
 {
     return REF2OBJ(ref)->GetState();
+}
+
+bool PictelSoundIsPlaying(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->QueryIsPlaging();
+}
+
+double PictelSoundQueryDuration(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->QueryDuration();
+}
+
+double PictelSoundQueryPosition(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->QueryPosition();
 }
 
 PlayerI *PlayerI::CreateFromFile(std::string path)

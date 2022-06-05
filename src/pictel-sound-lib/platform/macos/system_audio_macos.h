@@ -58,6 +58,7 @@ namespace PictelSound
         void Free();
         PlayerState GetState();
         bool QueryIsRunning();
+        double QueryPosition();
         double GetDuration();
         void SetVolume(double);
         void SetLoops(bool);
