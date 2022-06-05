@@ -318,6 +318,15 @@ PlayerState SystemAudio::GetState()
 
 void SystemAudio::SetVolume(double value)
 {
+    if (m_mediaPlayerConfig == nullptr)
+    {   return;
+    }
+
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+
+    if (ma_device_set_master_volume(&config->m_device, value) != MA_SUCCESS)
+    {   printf("Could not set the volume!\n");
+    }
 }
 
 void SystemAudio::SetLoops(bool loops)

@@ -28,10 +28,11 @@ int main()
 
     PictelSoundPause(ref2);
 
-    printf("Press any key to unpause ref2\\n");
+    printf("Press any key to unpause ref2 and lower the volume on ref2\\n");
     getchar();
 
     PictelSoundPlay(ref2);
+    PictelSoundSetVolume(ref2, 0.5);
 
     printf("Press any key to quit\\n");
     getchar();
