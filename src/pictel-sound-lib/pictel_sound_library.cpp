@@ -93,6 +93,11 @@ bool PictelSoundIsPlaying(PictelSoundRef ref)
     return REF2OBJ(ref)->QueryIsPlaging();
 }
 
+double PictelSoundQueryDuration(PictelSoundRef ref)
+{
+    return REF2OBJ(ref)->QueryDuration();
+}
+
 PlayerI *PlayerI::CreateFromFile(std::string path)
 {
     DecoderI *decoder = new DecoderVorbis(path);

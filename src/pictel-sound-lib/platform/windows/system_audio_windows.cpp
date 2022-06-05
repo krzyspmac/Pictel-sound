@@ -308,7 +308,19 @@ bool SystemAudio::QueryIsRunning()
 
 double SystemAudio::GetDuration()
 {
-    return -1;
+    MiniAudioConfig* config = (MiniAudioConfig*)m_mediaPlayerConfig;
+    if (config == nullptr)
+    {   return false;
+    }
+
+    float duration = 0.0;
+
+    if (ma_data_source_get_length_in_seconds((ma_data_source*)&config->m_ma_decoder, &duration) != MA_SUCCESS)
+    {   printf("Could not get the length!\n");
+        return -1;
+    }
+    
+    return duration;
 }
 
 PlayerState SystemAudio::GetState()

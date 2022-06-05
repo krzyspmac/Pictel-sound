@@ -89,6 +89,14 @@ bool Player::QueryIsPlaging()
     }
 }
 
+double Player::QueryDuration()
+{
+    if (m_systemAudio == nullptr)
+    {   return -1;
+    }
+    return m_systemAudio->GetDuration();
+}
+
 void Player::SetVolume(double value)
 {
     m_systemAudio->SetVolume(value);

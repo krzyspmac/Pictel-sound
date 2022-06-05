@@ -77,4 +77,7 @@ PlayerState PictelSoundGetPlayerState(PictelSoundRef);
 /** Query is playing */
 bool PictelSoundIsPlaying(PictelSoundRef);
 
+/** Query duration */
+double PictelSoundQueryDuration(PictelSoundRef);
+
 #endif //PICTEL_SOUND_H
