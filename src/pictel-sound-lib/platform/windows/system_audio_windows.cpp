@@ -23,7 +23,6 @@
 // SOFTWARE.
 
 #include "system_audio_windows.h"
-#include "system_audio_manager.h"
 
 #define MA_NO_VORBIS    /* Disable the built-in Vorbis decoder to ensure the libvorbis decoder is picked. */
 #define MA_NO_OPUS      /* Disable the (not yet implemented) built-in Opus decoder to ensure the libopus decoder is picked. */

@@ -179,15 +179,12 @@
     <ClInclude Include="..\..\src\pictel-sound-lib\interfaces.h" />
     <ClInclude Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_windows.h" />
     <ClInclude Include="..\..\src\pictel-sound-lib\player.hpp" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\pictel-sound-lib\decoder_vorbis.cpp" />
     <ClCompile Include="..\..\src\pictel-sound-lib\pictel_sound_library.cpp" />
     <ClCompile Include="..\..\src\pictel-sound-lib\platform\windows\system_audio_windows.cpp" />
     <ClCompile Include="..\..\src\pictel-sound-lib\player.cpp" />
-    <ClCompile Include="Pictel-sound.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

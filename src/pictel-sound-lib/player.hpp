@@ -39,19 +39,20 @@ namespace PictelSound
         Player(DecoderI*, SystemAudioI*);
         ~Player();
 
-    public:
+    public: // PlayerI
         bool Open();
         void Play();
         void Pause();
         void Stop();
-        void Close();
         void SetVolume(double);
-        void Seek(double);
         void SetLoops(bool);
         bool QueryIsPlaging();
         double QueryDuration();
         double QueryPosition();
         PlayerState GetState();
+
+    public: // __PlayerI
+        void Close();
     };
 };
 
