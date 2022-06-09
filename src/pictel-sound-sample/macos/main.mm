@@ -35,6 +35,14 @@ int main(int argc, char *argv[])
     // C library usage
     PictelSoundRef shortFile = PictelSoundCreate(path);
     PictelSoundOpen(shortFile);
+
+    for (int i = 0; i < 3; i++)
+    {
+        PictelSoundPlay(shortFile);
+        RunQueueForTimeInterval(1.0);
+        PictelSoundStop(shortFile);
+    }
+
     PictelSoundPlay(shortFile);
     PictelSoundSetLoops(shortFile, true);
     RunQueueForTimeInterval(2.5);

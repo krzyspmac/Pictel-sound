@@ -229,6 +229,8 @@ void SystemAudio::Stop()
     {   printf("Could not stop audio queue, OSStatus=%d.\n", osStatus);
         return;
     }
+
+    SignalDidFinish(false);
 }
 
 void SystemAudio::Free()
@@ -304,7 +306,7 @@ void SystemAudio::SetLoops(bool loops)
     m_loops = loops;
 }
 
-void SystemAudio::SignalDidFinish()
+void SystemAudio::SignalDidFinish(bool canRestart)
 {
     printf("Did finish signal received\n");
     SetState(PLAYER_STOPPED);
@@ -312,7 +314,7 @@ void SystemAudio::SignalDidFinish()
     PrepareToPlay();
     SetState(PLAYER_PREPARED);
 
-    if (m_loops)
+    if (canRestart && m_loops)
     {   Play();
     }
 }
@@ -346,7 +348,7 @@ static void PictelPropertyListener(void*                 inUserData,
 
         if (!isRunning)
         {
-            pPlayer->SignalDidFinish();
+            pPlayer->SignalDidFinish(true);
         }
     }
 }

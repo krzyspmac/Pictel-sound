@@ -67,7 +67,7 @@ namespace PictelSound
         /** Read bytes into the system-prepared buffer. The pointer is system-specific. */
         void ReadBufferInto(void*);
 
-        void SignalDidFinish();
+        void SignalDidFinish(bool);
     private:
         /** Sets the state. Will invoke the listener callback. */
         void SetState(PlayerState);
