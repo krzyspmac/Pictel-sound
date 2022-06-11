@@ -103,6 +103,16 @@ double PictelSoundQueryPosition(PictelSoundRef ref)
     return REF2OBJ(ref)->QueryPosition();
 }
 
+PictelSoundStateObseverRef PictelSoundAddObserver(PictelSoundRef ref, void (*SoundCallback)(PlayerState))
+{
+    return REF2OBJ(ref)->AddCallbackFunction(SoundCallback);
+}
+
+void PictelSoundRemoveObserver(PictelSoundRef ref, PictelSoundStateObseverRef observerRef)
+{
+    REF2OBJ(ref)->RemoveCallback(static_cast<PlayerCallbackI*>(observerRef));
+}
+
 PlayerI *PlayerI::CreateFromFile(std::string path)
 {
     DecoderI *decoder = new DecoderVorbis(path);

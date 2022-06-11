@@ -54,7 +54,7 @@ namespace PictelSound
         virtual bool ReadBuffer(void *buffer, unsigned int capacity, unsigned int *outTotalBytesRead) = 0;
     };
 
-    class SystemAudioI
+    class SystemAudioI: public PlayerCallbacksControlI
     {
         DecoderI *m_decoder;
     public:

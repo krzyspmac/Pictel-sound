@@ -26,6 +26,7 @@
 #define pictel_sound_file_hpp
 
 #include <iostream>
+#include <vector>
 #include "interfaces.h"
 
 namespace PictelSound
@@ -50,6 +51,10 @@ namespace PictelSound
         double QueryDuration();
         double QueryPosition();
         PlayerState GetState();
+
+        PlayerCallbackI *AddCallbackLambda(std::function<void(PlayerState)> lambda);
+        PlayerCallbackI *AddCallbackFunction(void (*f)(PlayerState));
+        void RemoveCallback(PlayerCallbackI*);
 
     public: // __PlayerI
         void Close();
