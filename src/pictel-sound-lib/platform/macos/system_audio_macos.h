@@ -63,7 +63,8 @@ namespace PictelSound
         double GetDuration();
         void SetVolume(double);
         void SetLoops(bool);
-        PlayerCallbackI* AddCallback(std::function<void(PlayerState)> lambda);
+        PlayerCallbackI *AddCallbackLambda(std::function<void(PlayerState)> lambda);
+        PlayerCallbackI *AddCallbackFunction(void (*f)(PlayerState));
         void RemoveCallback(PlayerCallbackI*);
     public: /** PlayerObserverI */
     public:

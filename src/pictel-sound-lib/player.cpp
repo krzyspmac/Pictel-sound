@@ -120,9 +120,14 @@ PlayerState Player::GetState()
     return PLAYER_STOPPED;
 }
 
-PlayerCallbackI* Player::AddCallback(std::function<void(PlayerState)> lambda)
+PlayerCallbackI* Player::AddCallbackLambda(std::function<void(PlayerState)> lambda)
 {
-    return m_systemAudio->AddCallback(lambda);
+    return m_systemAudio->AddCallbackLambda(lambda);
+}
+
+PlayerCallbackI *Player::AddCallbackFunction(void (*f)(PlayerState))
+{
+    return m_systemAudio->AddCallbackFunction(f);
 }
 
 void Player::RemoveCallback(PlayerCallbackI* callback)

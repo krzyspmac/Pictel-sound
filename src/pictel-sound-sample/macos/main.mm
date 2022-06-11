@@ -26,6 +26,7 @@
 #include "pictel_sound.hpp"
 
 static void RunQueueForTimeInterval(NSTimeInterval);
+static void SoundCallback(PlayerState state);
 
 int main(int argc, char *argv[])
 {
@@ -33,26 +34,27 @@ int main(int argc, char *argv[])
     NSLog(@"Opening file %s", path);
 
     // C library usage
-//    PictelSoundRef shortFile = PictelSoundCreate(path);
-//    PictelSoundOpen(shortFile);
-//
-//    for (int i = 0; i < 3; i++)
-//    {
-//        PictelSoundPlay(shortFile);
-//        RunQueueForTimeInterval(1.0);
-//        PictelSoundStop(shortFile);
-//    }
-//
-//    PictelSoundPlay(shortFile);
-//    PictelSoundSetLoops(shortFile, true);
-//    RunQueueForTimeInterval(2.5);
-//    RunQueueForTimeInterval(15);
-//    PictelSoundRelease(shortFile);
+    PictelSoundRef shortFile = PictelSoundCreate(path);
+    PictelSoundAddObserver(shortFile, &SoundCallback);
+    PictelSoundOpen(shortFile);
+
+    for (int i = 0; i < 3; i++)
+    {
+        PictelSoundPlay(shortFile);
+        RunQueueForTimeInterval(1.0);
+        PictelSoundStop(shortFile);
+    }
+
+    PictelSoundPlay(shortFile);
+    PictelSoundSetLoops(shortFile, true);
+    RunQueueForTimeInterval(2.5);
+    RunQueueForTimeInterval(15);
+    PictelSoundRelease(shortFile);
 
     // C++ libray usage
     auto *player = PictelSound::PlayerI::CreateFromFile(path);
     player->SetLoops(true);
-    auto callbackRef = player->AddCallback([&](auto state){
+    auto callbackRef = player->AddCallbackLambda([&](auto state){
         printf("Callback with state %d.\n", state);
     });
     player->Open();
@@ -73,4 +75,9 @@ void RunQueueForTimeInterval(NSTimeInterval seconds)
         printf("Runloop running...\n");
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     }
+}
+
+void SoundCallback(PlayerState state)
+{
+    printf("Callback from function with state %d.\n", state);
 }

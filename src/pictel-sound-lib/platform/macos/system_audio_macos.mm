@@ -311,9 +311,16 @@ void SystemAudio::SetLoops(bool loops)
     m_loops = loops;
 }
 
-PlayerCallbackI* SystemAudio::AddCallback(std::function<void(PlayerState)> lambda)
+PlayerCallbackI* SystemAudio::AddCallbackLambda(std::function<void(PlayerState)> lambda)
 {
     auto callback = std::unique_ptr<PlayerCallbackI>(new PlayerCallbackLambda(lambda));
+    m_callbacks.emplace_back(std::move(callback));
+    return m_callbacks.at(m_callbacks.size()-1).get();
+}
+
+PlayerCallbackI *SystemAudio::AddCallbackFunction(void (*f)(PlayerState))
+{
+    auto callback = std::unique_ptr<PlayerCallbackI>(new PlayerCallbackFunction(f));
     m_callbacks.emplace_back(std::move(callback));
     return m_callbacks.at(m_callbacks.size()-1).get();
 }

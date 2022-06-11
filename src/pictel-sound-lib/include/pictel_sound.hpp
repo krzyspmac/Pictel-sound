@@ -53,10 +53,23 @@ namespace PictelSound
         void PerformStateCallback(PlayerState state) { m_callback(state); };
     };
 
+    class PlayerCallbackFunction: public PlayerCallbackI
+    {
+        void (*m_function)(PlayerState);
+    public:
+        PlayerCallbackFunction(void (*f)(PlayerState) )
+        : PlayerCallbackI()
+        , m_function(f)
+        { };
+
+        void PerformStateCallback(PlayerState state) { (*m_function)(state); };
+    };
+
     class PlayerCallbacksControlI
     {
     public:
-        virtual PlayerCallbackI *AddCallback(std::function<void(PlayerState)> lambda) = 0;
+        virtual PlayerCallbackI *AddCallbackLambda(std::function<void(PlayerState)> lambda) = 0;
+        virtual PlayerCallbackI *AddCallbackFunction(void (*f)(PlayerState)) = 0;
         virtual void RemoveCallback(PlayerCallbackI*) = 0;
     };
 
