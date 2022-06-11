@@ -48,6 +48,7 @@ namespace PictelSound
         PlayerState m_playerState;
         bool m_loops;
         std::vector<std::unique_ptr<PlayerCallbackI>> m_callbacks;
+        std::vector<PlayerCallbackI*> m_callbackStack;
     public: /** SystemAudioI */
         SystemAudio();
         ~SystemAudio();
@@ -63,6 +64,7 @@ namespace PictelSound
         double GetDuration();
         void SetVolume(double);
         void SetLoops(bool);
+        void AddCallback(PlayerCallbackI*);
         PlayerCallbackI *AddCallbackLambda(std::function<void(PlayerState)> lambda);
         PlayerCallbackI *AddCallbackFunction(void (*f)(PlayerState));
         void RemoveCallback(PlayerCallbackI*);

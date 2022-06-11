@@ -63,9 +63,15 @@ void SystemAudio::SetState(PlayerState state)
 {
     m_playerState = state;
 
+    m_callbackStack.clear();
     for (auto it = m_callbacks.begin(); it != m_callbacks.end(); ++it)
     {
-        it->get()->PerformStateCallback(state);
+        m_callbackStack.emplace_back(it->get());
+    }
+
+    for (auto it = m_callbackStack.begin(); it != m_callbackStack.end(); ++it)
+    {
+        (*it)->PerformStateCallback(state);
     }
 }
 
@@ -309,6 +315,11 @@ void SystemAudio::SetVolume(double value)
 void SystemAudio::SetLoops(bool loops)
 {
     m_loops = loops;
+}
+
+void SystemAudio::AddCallback(PlayerCallbackI* callback)
+{
+    m_callbacks.emplace_back(std::move(callback));
 }
 
 PlayerCallbackI* SystemAudio::AddCallbackLambda(std::function<void(PlayerState)> lambda)
