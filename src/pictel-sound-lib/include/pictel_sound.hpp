@@ -30,7 +30,37 @@
 
 namespace PictelSound
 {
-    class PlayerI
+    class PlayerCallbackI
+    {
+    public:
+        PlayerCallbackI() { };
+        virtual ~PlayerCallbackI() { };
+        
+        /** Perform a callback to the observer function provided the current position
+            in seconds. */
+        virtual void PerformStateCallback(PlayerState) = 0;
+    };
+
+    class PlayerCallbackLambda: public PlayerCallbackI
+    {
+        std::function<void(PlayerState)> m_callback;
+    public:
+        PlayerCallbackLambda(std::function<void(PlayerState)> lambda)
+        : PlayerCallbackI()
+        , m_callback(lambda)
+        { };
+
+        void PerformStateCallback(PlayerState state) { m_callback(state); };
+    };
+
+    class PlayerCallbacksControlI
+    {
+    public:
+        virtual PlayerCallbackI *AddCallback(std::function<void(PlayerState)> lambda) = 0;
+        virtual void RemoveCallback(PlayerCallbackI*) = 0;
+    };
+
+    class PlayerI: public PlayerCallbacksControlI
     {
     public:
         static PlayerI* CreateFromFile(std::string);

@@ -47,6 +47,7 @@ namespace PictelSound
         DecoderI *m_decoder;
         PlayerState m_playerState;
         bool m_loops;
+        std::vector<std::unique_ptr<PlayerCallbackI>> m_callbacks;
     public: /** SystemAudioI */
         SystemAudio();
         ~SystemAudio();
@@ -62,6 +63,8 @@ namespace PictelSound
         double GetDuration();
         void SetVolume(double);
         void SetLoops(bool);
+        PlayerCallbackI* AddCallback(std::function<void(PlayerState)> lambda);
+        void RemoveCallback(PlayerCallbackI*);
     public: /** PlayerObserverI */
     public:
         /** Read bytes into the system-prepared buffer. The pointer is system-specific. */

@@ -62,6 +62,11 @@ SystemAudio::~SystemAudio()
 void SystemAudio::SetState(PlayerState state)
 {
     m_playerState = state;
+
+    for (auto it = m_callbacks.begin(); it != m_callbacks.end(); ++it)
+    {
+        it->get()->PerformStateCallback(state);
+    }
 }
 
 void SystemAudio::SetDecoder(DecoderI *decoder)
@@ -304,6 +309,24 @@ void SystemAudio::SetVolume(double value)
 void SystemAudio::SetLoops(bool loops)
 {
     m_loops = loops;
+}
+
+PlayerCallbackI* SystemAudio::AddCallback(std::function<void(PlayerState)> lambda)
+{
+    auto callback = std::unique_ptr<PlayerCallbackI>(new PlayerCallbackLambda(lambda));
+    m_callbacks.emplace_back(std::move(callback));
+    return m_callbacks.at(m_callbacks.size()-1).get();
+}
+
+void SystemAudio::RemoveCallback(PlayerCallbackI* callback)
+{
+    for (auto it = m_callbacks.begin(); it != m_callbacks.end(); ++it)
+    {
+        if (it->get() == callback)
+        {   m_callbacks.erase(it);
+            return;
+        }
+    }
 }
 
 void SystemAudio::SignalDidFinish(bool canRestart)
