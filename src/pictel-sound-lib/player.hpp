@@ -52,6 +52,7 @@ namespace PictelSound
         double QueryPosition();
         PlayerState GetState();
 
+        void AddCallback(PlayerCallbackI*);
         PlayerCallbackI *AddCallbackLambda(std::function<void(PlayerState)> lambda);
         PlayerCallbackI *AddCallbackFunction(void (*f)(PlayerState));
         void RemoveCallback(PlayerCallbackI*);

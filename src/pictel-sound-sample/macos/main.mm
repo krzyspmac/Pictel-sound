@@ -33,34 +33,39 @@ int main(int argc, char *argv[])
     const char * path = argv[1];
     NSLog(@"Opening file %s", path);
 
-    // C library usage
-    PictelSoundRef shortFile = PictelSoundCreate(path);
-    PictelSoundAddObserver(shortFile, &SoundCallback);
-    PictelSoundOpen(shortFile);
-
-    for (int i = 0; i < 3; i++)
-    {
-        PictelSoundPlay(shortFile);
-        RunQueueForTimeInterval(1.0);
-        PictelSoundStop(shortFile);
-    }
-
-    PictelSoundPlay(shortFile);
-    PictelSoundSetLoops(shortFile, true);
-    RunQueueForTimeInterval(2.5);
-    RunQueueForTimeInterval(15);
-    PictelSoundRelease(shortFile);
+//    // C library usage
+//    PictelSoundRef shortFile = PictelSoundCreate(path);
+//    PictelSoundAddObserver(shortFile, &SoundCallback);
+//    PictelSoundOpen(shortFile);
+//
+//    for (int i = 0; i < 3; i++)
+//    {
+//        PictelSoundPlay(shortFile);
+//        RunQueueForTimeInterval(1.0);
+//        PictelSoundStop(shortFile);
+//    }
+//
+//    PictelSoundPlay(shortFile);
+//    PictelSoundSetLoops(shortFile, true);
+//    RunQueueForTimeInterval(2.5);
+//    RunQueueForTimeInterval(15);
+//    PictelSoundRelease(shortFile);
 
     // C++ libray usage
     auto *player = PictelSound::PlayerI::CreateFromFile(path);
-    player->SetLoops(true);
-    auto callbackRef = player->AddCallbackLambda([&](auto state){
+    player->SetLoops(false);
+    PictelSound::PlayerCallbackI *callbackRef = nullptr;
+    callbackRef = player->AddCallbackLambda([&](auto state){
         printf("Callback with state %d.\n", state);
+        if (state == PLAYER_PAUSED) {
+            player->RemoveCallback(callbackRef);
+        }
     });
     player->Open();
     player->Play();
-    RunQueueForTimeInterval(10);
-    player->RemoveCallback(callbackRef);
+    RunQueueForTimeInterval(3);
+    player->Pause();
+//    player->RemoveCallback(callbackRef);
     RunQueueForTimeInterval(15);
     delete player;
 
