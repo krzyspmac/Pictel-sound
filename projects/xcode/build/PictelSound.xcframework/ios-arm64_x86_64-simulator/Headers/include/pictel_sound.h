@@ -37,10 +37,13 @@ typedef enum
     PLAYER_DISCARDED    = 100
 } PlayerState;
 
-/** Defines a handler for the sound. All subsequent calls require it.
+/** Defines a handle for the sound. All subsequent calls require it.
     When you're done with it, please release via PictelSoundRelease(ref).
  */
 typedef void* PictelSoundRef;
+
+/** Defines a handle for the audio state observer */
+typedef void* PictelSoundStateObseverRef;
 
 /** Open the file handle.
     Returns NULL upon error. */
@@ -82,5 +85,11 @@ double PictelSoundQueryDuration(PictelSoundRef);
 
 /** Query position */
 double PictelSoundQueryPosition(PictelSoundRef);
+
+/** Add a state observer */
+PictelSoundStateObseverRef PictelSoundAddObserver(PictelSoundRef, void (*SoundCallback)(PlayerState));
+
+/** Remove a state observer */
+void PictelSoundRemoveObserver(PictelSoundRef, PictelSoundStateObseverRef);
 
 #endif //PICTEL_SOUND_H
