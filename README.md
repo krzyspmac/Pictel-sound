@@ -55,11 +55,30 @@ C
 ```c
 #include "pictel_sound.h"
 
-PictelSoundRef file = PictelSoundCreate("path_to_file.ogg");
-PictelSoundOpen(file);
-PictelSoundPlay(file);
+static void SoundCallback(PlayerState state);
 
-PictelSoundRelease(file);
+int main(int argc, char *argv[])
+{
+    // create a handle to file
+    PictelSoundRef file = PictelSoundCreate("path_to_file.ogg");
+   
+    // add a C-function state callback
+    PictelSoundAddObserver(shortFile, &SoundCallback);
+   
+    // open the sound file
+    PictelSoundOpen(file);				
+   
+    // play the file
+    PictelSoundPlay(file);
+
+    // wait a while
+    PictelSoundRelease(file);
+}
+
+void SoundCallback(PlayerState state)
+{
+    printf("Callback from function with state %d.\n", state);
+}
 ```
 
 C++
@@ -68,10 +87,30 @@ C++
 ```c_cpp
 #include "pictel_sound.hpp"
 
-auto *player = PlayerI::CreateFromFile("path_to_file.ogg");
-player->Open();
-player->Play();
-delete player;
+int main(int argc, char *argv[])
+{
+
+    // create a handle to file
+    auto *player = PictelSound::PlayerI::CreateFromFile(path);
+    
+    // set it to loop
+    player->SetLoops(true);
+    
+    // add a state change callback
+    auto callbackRef = player->AddCallbackLambda([&](auto state){
+        printf("Callback with state %d.\n", state);
+    });
+    
+    // open the sound file
+    player->Open();
+    
+    // play the file
+    player->Play();
+
+    // wait a bit and release when you're ready   
+    delete player;
+}
+
 ```
 
 License
